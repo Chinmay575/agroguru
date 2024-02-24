@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CustomTextField extends StatelessWidget {
   void Function(String) onChanged;
@@ -34,30 +36,32 @@ class CustomTextField extends StatelessWidget {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: height ?? deviceHeight * 0.065,
-      width: width ?? deviceWidth,
-      margin: margin ??
-          EdgeInsets.symmetric(
-            horizontal: deviceWidth * 0.05,
-            vertical: deviceHeight * 0.005,
-          ),
+      height: height ?? 64.h,
+      width: width ?? 320.w,
+      margin: margin ?? const EdgeInsets.symmetric(),
       padding: padding,
       child: TextFormField(
         onChanged: onChanged,
+        style: TextStyle(
+          fontSize: 16.h,
+          fontFamily: 'Lato',
+          fontWeight: FontWeight.w400,
+        ),
         decoration: InputDecoration(
           hintText: hintText,
           border: normalBorder(),
           contentPadding: contentPadding ??
-              EdgeInsets.symmetric(
-                vertical: 2,
-                horizontal: deviceWidth * 0.05,
+              EdgeInsets.only(
+                top: 22.h,
+                bottom: 23.h,
+                left: 29.w,
+                right: 36.w,
               ),
           filled: filled ?? true,
-          fillColor: fillColor ?? Colors.white,
+          fillColor: fillColor ?? HexColor('#1315131A'),
           enabledBorder: normalBorder(),
           focusedBorder: normalBorder(),
           errorBorder: errorBorder(),
-
         ),
         validator: validator,
       ),
@@ -66,14 +70,15 @@ class CustomTextField extends StatelessWidget {
 
   InputBorder normalBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRadius ?? 30),
+      borderRadius: BorderRadius.circular(borderRadius ?? 32.r),
+      borderSide: BorderSide.none,
     );
   }
 
   InputBorder errorBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRadius ?? 30),
-      borderSide: BorderSide(
+      borderRadius: BorderRadius.circular(borderRadius ?? 32.r),
+      borderSide: const BorderSide(
         color: Colors.red,
       ),
     );

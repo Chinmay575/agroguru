@@ -4,7 +4,7 @@ import 'package:agroguru/src/presentation/home/home_page.dart';
 import 'package:agroguru/src/presentation/login/bloc/login_bloc.dart';
 import 'package:agroguru/src/presentation/login/login_page.dart';
 import 'package:agroguru/src/presentation/register/register_page.dart';
-import 'package:agroguru/src/utils/constants/routes.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

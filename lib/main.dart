@@ -1,7 +1,10 @@
 import 'package:agroguru/src/config/router.dart';
-import 'package:agroguru/src/utils/constants/routes.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
+import 'package:agroguru/src/utils/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future main() async {
   await AppRouter.init();
@@ -14,14 +17,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [...AppRouter.allBlocProviders()],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'AgroGuru',
-        theme: ThemeData(
-          useMaterial3: true,
+      child: ScreenUtilInit(
+        designSize: const Size(390, 844),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'AgroGuru',
+          theme: lightTheme,
+          initialRoute: Routes.login,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+           locale: Locale('hi'),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+         
         ),
-        initialRoute: Routes.login,
-        onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
   }

@@ -1,0 +1,19 @@
+{
+    "agro": "एग्रो",
+    "guru": "गुरु",
+    "tagline": "आपका डिजिटल कृषि भागीदार",
+    "continueWithGoogle": "गूगल के साथ जारी रखें",
+    "loginWithEmailPhone": "ईमेल/मोबाइल नंबर से लॉगिन करें.",
+    "dontHaveAccount": "खाता नहीं है",
+    "createAccount": "खाता बनाएं",
+    "back": "पीछे",
+    "email": "ईमेल",
+    "emailHint": "अपना ईमेल भरें",
+    "password": "पासवर्ड",
+    "passwordHint": "अपना पासवर्ड भरें",
+    "confirmPassword": "पासवर्ड की पुष्टि कीजिये",
+    "confirmPasswordHint": "अपने पासवर्ड की पुष्टि करें",
+    "iAgreeWithTermsAndConditions": "मैं नियम और शर्तों से सहमत हूं",
+    "register": "पंजी",
+    "privacyPolicyInfo": "गोपनीयता नीति के तहत आपकी जानकारी साझा नहीं की जाएगी"
+}

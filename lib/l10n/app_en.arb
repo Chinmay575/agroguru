@@ -1,0 +1,19 @@
+{
+    "agro": "Agro",
+    "guru": "Guru",
+    "tagline": "Your Digital Agriculture Partner",
+    "continueWithGoogle": "Continue with Google",
+    "loginWithEmailPhone": "Login with Email/Mobile No.",
+    "dontHaveAccount": "Don't have an Account",
+    "createAccount": "Create Account",
+    "back": "Back",
+    "email": "Email",
+    "emailHint": "Enter your Email",
+    "password": "Password",
+    "passwordHint": "Enter your Password",
+    "confirmPassword": "ConfirmPassword",
+    "confirmPasswordHint": "Confirm your Password",
+    "iAgreeWithTermsAndConditions": "I agree with Terms and Conditions",
+    "register": "Register",
+    "privacyPolicyInfo": "Your information will not be shared under Privacy Policy"
+}
