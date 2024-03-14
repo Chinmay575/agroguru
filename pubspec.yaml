@@ -43,6 +43,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  http: ^1.2.1
+  geolocator: ^11.0.0
+  firebase_core: ^2.27.1
+  firebase_auth: ^4.17.9
+  cloud_firestore: ^4.15.9
+  firebase_storage: ^11.6.10
+  google_sign_in: ^6.2.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +79,8 @@ flutter:
     - assets/images/
     - assets/json/
     - assets/fonts/
+    - assets/weather/64x64/day/
+    - assets/weather/64x64/night/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

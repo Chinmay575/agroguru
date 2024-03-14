@@ -3,8 +3,8 @@
     "guru": "Guru",
     "tagline": "Your Digital Agriculture Partner",
     "continueWithGoogle": "Continue with Google",
-    "loginWithEmailPhone": "Login with Email/Mobile No.",
-    "dontHaveAccount": "Don't have an Account",
+    "loginWithEmailPhone": "Login with Email",
+    "dontHaveAccount": "Don't have an Account ?",
     "createAccount": "Create Account",
     "back": "Back",
     "email": "Email",
@@ -15,5 +15,15 @@
     "confirmPasswordHint": "Confirm your Password",
     "iAgreeWithTermsAndConditions": "I agree with Terms and Conditions",
     "register": "Register",
-    "privacyPolicyInfo": "Your information will not be shared under Privacy Policy"
+    "privacyPolicyInfo": "Your information will not be \n shared under Privacy Policy.",
+    "loginAccount": "Login Account",
+    "forgetPassword": "Forget Your Password",
+    "login": "Login",
+    "verification": "Verification",
+    "verificationText": "We need to verify your email address. Please enter the OTP (One-Time Password) sent to your email i.e. example@gmail.com.",
+    "otp": "OTP (One-Time Password)",
+    "verifyEmail": "Verify Email",
+    "resendOTPin": "Resend OTP in",
+    "resendOTP": "Resend OTP",
+    "issuesText": "Having trouble? Contact\n support for assistance"
 }

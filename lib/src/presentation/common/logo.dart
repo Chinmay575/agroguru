@@ -1,3 +1,4 @@
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -17,30 +18,17 @@ class Logo extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.agro,
-                style: TextStyle(
-                  fontSize: 61.h,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyles.heading1(),
               ),
               Text(
                 AppLocalizations.of(context)!.guru,
-                style: TextStyle(
-                  fontSize: 61.h,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
-                ),
+                style: TextStyles.heading1(color: Theme.of(context).primaryColor),
               ),
             ],
           ),
           Text(
             AppLocalizations.of(context)!.tagline,
-            style: TextStyle(
-              fontSize: 16.h,
-              fontFamily: 'Lato',
-              color: HexColor('#BF131513'),
-            ),
+            style: TextStyles.body(color: HexColor('#BF131513')),
           ),
         ],
       ),

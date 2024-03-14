@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "125457112288",
+    "project_id": "agroguru-2850c",
+    "storage_bucket": "agroguru-2850c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125457112288:android:cbebb8a21997de3d4b0485",
+        "android_client_info": {
+          "package_name": "com.example.agroguru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125457112288-eikfbsu7cp0et4us2tib90s1ht35cn5e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agroguru",
+            "certificate_hash": "4d77b5b4944204ff438b459ada2fee8d0ecbe410"
+          }
+        },
+        {
+          "client_id": "125457112288-93ffpurskdt8huesv3ed9c39tefv9cmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHkh8v3UvblnfxLNltTy7CCBcCGKTK1Sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125457112288-93ffpurskdt8huesv3ed9c39tefv9cmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -15,7 +16,6 @@ class CustomIconTextButton extends StatelessWidget {
     required this.text,
     required this.color,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +37,12 @@ class CustomIconTextButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsets.only(right: 20),
+            margin: const EdgeInsets.only(right: 20),
             child: icon,
           ),
           Text(
             text,
-            style: TextStyle(
-              fontFamily: 'Lato',
-              fontSize: 20.h,
-              fontWeight: FontWeight.w600,
-              color: HexColor('#80131513'),
-            ),
+            style: TextStyles.heading6(color: HexColor('#80131513')),
           ),
         ],
       ),

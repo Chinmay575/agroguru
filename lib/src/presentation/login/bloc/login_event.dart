@@ -9,3 +9,5 @@ class ChangeLoginMethod extends LoginEvent {
     required this.loginType,
   });
 }
+
+class LoginUsingGoogle extends LoginEvent {}

@@ -1,5 +1,8 @@
+import 'package:agroguru/src/presentation/common/back_button.dart';
 import 'package:agroguru/src/presentation/common/labelled_text_field.dart';
 import 'package:agroguru/src/presentation/common/text_button.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -16,49 +19,24 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        // title: CustomBackButton(),
+        leading: const CustomBackButton(),
+        leadingWidth: 89.w,
+      ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 31.w),
+          margin: EdgeInsets.symmetric(horizontal: 32.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MaterialButton(
-                padding: EdgeInsets.zero,
-                minWidth: 58.w,
-                height: 19.h,
-                // color: Colors.amber,
-                elevation: 0,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(right: 8.w),
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 16.w,
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.back,
-                      style: TextStyle(fontFamily: 'Lato', fontSize: 16.h),
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 64.h,
               ),
               Text(
                 AppLocalizations.of(context)!.createAccount,
-                style: TextStyle(
-                  fontFamily: 'Lato',
-                  fontSize: 39.h,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: TextStyles.heading3(),
               ),
               SizedBox(
                 height: 32.h,
@@ -101,11 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ? Text(
                             AppLocalizations.of(context)!
                                 .iAgreeWithTermsAndConditions,
-                            style: TextStyle(
-                              fontFamily: 'Lato',
-                              // height: 19.h,
-                              fontSize: 16.h,
-                            ),
+                            style: TextStyles.body(),
                           )
                         : Row(
                             mainAxisSize: MainAxisSize.min,
@@ -113,18 +87,11 @@ class _RegisterPageState extends State<RegisterPage> {
                             children: [
                               Text(
                                 'I agree with ',
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  // height: 19.h,
-                                  fontSize: 16.h,
-                                ),
+                                style: TextStyles.body(),
                               ),
                               Text(
                                 'Terms and Conditions',
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  // height: 19.h,
-                                  fontSize: 16.h,
+                                style: TextStyles.body(
                                   color: Theme.of(context).primaryColor,
                                   decoration: TextDecoration.underline,
                                   decorationColor:
@@ -137,7 +104,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               CustomTextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.verifyEmail);
+                },
                 text: AppLocalizations.of(context)!.register,
                 color: Theme.of(context).primaryColor,
                 textColor: Colors.white,
@@ -148,16 +117,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Center(
                   child: Text(
                     AppLocalizations.of(context)!.privacyPolicyInfo,
-                    style: TextStyle(
-                      fontSize: 14.h,
-                      fontFamily: 'Lato',
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: TextStyles.small(),
                   ),
                 ),
               ),
               SizedBox(
-                height: 64.h,
+                height: 32.h,
               ),
             ],
           ),

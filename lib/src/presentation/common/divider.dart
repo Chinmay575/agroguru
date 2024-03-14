@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CustomDivider extends StatelessWidget {
-  CustomDivider({super.key});
+  const CustomDivider({super.key});
 
   @override
   Widget build(BuildContext context) {

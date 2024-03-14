@@ -1,105 +1,82 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:agroguru/src/presentation/common/text_field.dart';
+import 'package:agroguru/src/presentation/common/back_button.dart';
+import 'package:agroguru/src/presentation/common/labelled_text_field.dart';
+import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/login/bloc/login_bloc.dart';
-import 'package:agroguru/src/presentation/login/widgets/greetings.dart';
-import 'package:agroguru/src/presentation/login/widgets/login_button.dart';
-import 'package:agroguru/src/utils/constants/enums/login_methods.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
+import 'package:agroguru/src/utils/styles/text_styles.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginUsingEmail extends StatelessWidget {
-  LoginUsingEmail({super.key});
-
-  late double deviceHeight, deviceWidth;
+  const LoginUsingEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            // title: CustomBackButton(),
+            leading: const CustomBackButton(),
+            leadingWidth: 89.w,
+          ),
           resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: Container(
-              padding: EdgeInsets.only(
-                top: deviceHeight * 0.15,
-              ),
+              margin: EdgeInsets.symmetric(horizontal: 31.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: deviceHeight * 0.02,
+                    height: 64.h,
                   ),
-                  Greetings(),
+                  Text(
+                    AppLocalizations.of(context)!.loginAccount,
+                    style: TextStyles.heading3(),
+                  ),
                   SizedBox(
-                    height: deviceHeight * 0.05,
+                    height: 32.h,
                   ),
-                  CustomTextField(
+                  LabelledTextField(
+                    label: AppLocalizations.of(context)!.email,
                     onChanged: (val) {},
-                    hintText: 'Email',
+                    hintText: AppLocalizations.of(context)!.emailHint,
                   ),
-                  CustomTextField(
+                  LabelledTextField(
+                    label: AppLocalizations.of(context)!.password,
                     onChanged: (val) {},
-                    hintText: 'Password',
+                    hintText: AppLocalizations.of(context)!.passwordHint,
                   ),
-                  LoginButton(
-                    text: "Login",
-                    onPressed: () async {},
-                    color: Colors.green,
-                    icon: Icons.email,
-                  ),
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: deviceWidth * 0.05),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: deviceWidth * 0.35,
-                          child: Divider(
-                            height: 2,
-                            thickness: 2,
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
-                        Text(
-                          'OR',
-                          style: TextStyle(
-                            color: Colors.grey.shade400,
-                          ),
-                        ),
-                        Container(
-                          width: deviceWidth * 0.35,
-                          child: Divider(
-                            height: 2,
-                            thickness: 2,
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
-                      ],
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      AppLocalizations.of(context)!.forgetPassword,
+                      style: TextStyles.body(
+                        color: Theme.of(context).primaryColor,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
-                  LoginButton(
-                    text: "Login with Google",
-                    onPressed: () async {},
-                    color: Colors.red,
-                    icon: MdiIcons.google,
+                  SizedBox(
+                    height: 32.h,
                   ),
-                  LoginButton(
-                    text: "Login with Mobile Number",
-                    onPressed: () async {
-                      context.read<LoginBloc>().add(
-                            ChangeLoginMethod(loginType: LoginType.phone),
-                          );
+                  CustomTextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.home);
                     },
-                    color: Colors.blue,
-                    icon: MdiIcons.phone,
+                    text: AppLocalizations.of(context)!.login,
+                    color: Theme.of(context).primaryColor,
+                    textColor: Colors.white,
                   ),
                 ],
               ),

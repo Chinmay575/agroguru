@@ -3,8 +3,8 @@
     "guru": "गुरु",
     "tagline": "आपका डिजिटल कृषि भागीदार",
     "continueWithGoogle": "गूगल के साथ जारी रखें",
-    "loginWithEmailPhone": "ईमेल/मोबाइल नंबर से लॉगिन करें.",
-    "dontHaveAccount": "खाता नहीं है",
+    "loginWithEmailPhone": "ईमेल से लॉगिन करें.",
+    "dontHaveAccount": "खाता नहीं है ?",
     "createAccount": "खाता बनाएं",
     "back": "पीछे",
     "email": "ईमेल",
@@ -15,5 +15,15 @@
     "confirmPasswordHint": "अपने पासवर्ड की पुष्टि करें",
     "iAgreeWithTermsAndConditions": "मैं नियम और शर्तों से सहमत हूं",
     "register": "पंजी",
-    "privacyPolicyInfo": "गोपनीयता नीति के तहत आपकी जानकारी साझा नहीं की जाएगी"
+    "privacyPolicyInfo": "गोपनीयता नीति के तहत आपकी \n जानकारी साझा नहीं की जाएगी",
+    "loginAccount": "लॉगिन खाता",
+    "forgetPassword": "अपना पासवर्ड भूल गए हैं",
+    "login": "लॉग इन करें",
+    "verification": "सत्यापन",
+    "verificationText": "हमें आपका ईमेल पता सत्यापित करना होगा. कृपया अपने ईमेल यानी example@gmail.com पर भेजा गया ओटीपी (वन-टाइम पासवर्ड) दर्ज करें।",
+    "otp": "ओटीपी (वन-टाइम पासवर्ड)",
+    "verifyEmail": "ईमेल सत्यापित करें",
+    "resendOTPin": "ओटीपी पुनः भेजें",
+    "resendOTP": "ओटीपी पुनः भेजें",
+    "issuesText": "परेशानी हो रही है? सहायता के लिए समर्थन से संपर्क करें"
 }

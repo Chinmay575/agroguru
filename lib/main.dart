@@ -25,10 +25,9 @@ class MyApp extends StatelessWidget {
           theme: lightTheme,
           initialRoute: Routes.login,
           onGenerateRoute: AppRouter.onGenerateRoute,
-           locale: Locale('hi'),
+          locale: const Locale('en'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-         
         ),
       ),
     );

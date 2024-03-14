@@ -3,15 +3,19 @@ part of 'login_bloc.dart';
 
 class LoginState {
   LoginType loginType = LoginType.email;
+  AuthStatus status = AuthStatus.notStarted;
   LoginState({
     required this.loginType,
+    required this.status,
   });
 
   LoginState copyWith({
-    LoginType? method,
+    LoginType? loginType,
+    AuthStatus? status,
   }) {
     return LoginState(
-      loginType: method ?? this.loginType,
+      loginType: loginType ?? this.loginType,
+      status: status ?? this.status,
     );
   }
 }

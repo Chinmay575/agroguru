@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -9,13 +10,18 @@ class CustomTextField extends StatelessWidget {
   double? height;
   double? width;
   String? Function(String?)? validator;
-  late double deviceHeight, deviceWidth;
+  // late double deviceHeight, deviceWidth;
   EdgeInsets? margin;
   EdgeInsets? padding;
   EdgeInsets? contentPadding;
   double? borderRadius;
   bool? filled;
   Color? fillColor;
+  TextInputType? keyboardType;
+  int? maxLength;
+  int? maxLines;
+  TextAlign? textAlign;
+  FocusNode? focusNode;
   CustomTextField({
     Key? key,
     required this.onChanged,
@@ -29,12 +35,15 @@ class CustomTextField extends StatelessWidget {
     this.filled,
     this.contentPadding,
     this.borderRadius,
+    this.keyboardType, 
+    this.maxLength, 
+    this.maxLines, 
+    this.textAlign,
+    this.focusNode,  
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       height: height ?? 64.h,
       width: width ?? 320.w,
@@ -42,12 +51,16 @@ class CustomTextField extends StatelessWidget {
       padding: padding,
       child: TextFormField(
         onChanged: onChanged,
-        style: TextStyle(
-          fontSize: 16.h,
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w400,
-        ),
+        textAlign: textAlign ?? TextAlign.start,
+        style: TextStyles.body(),
+        maxLength: maxLength,
+        maxLines: maxLines,
+        focusNode: focusNode,
+        keyboardType: keyboardType ?? TextInputType.text,
+        
         decoration: InputDecoration(
+          counter: null,
+          counterText: '',
           hintText: hintText,
           border: normalBorder(),
           contentPadding: contentPadding ??

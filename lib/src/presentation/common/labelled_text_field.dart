@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:agroguru/src/presentation/common/text_field.dart';
@@ -28,11 +29,7 @@ class LabelledTextField extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: TextStyle(
-              fontFamily: 'Lato',
-              fontSize: 16.h,
-              fontWeight: FontWeight.w400, 
-            ),
+            style: TextStyles.body()
           ),
         ),
         CustomTextField(
