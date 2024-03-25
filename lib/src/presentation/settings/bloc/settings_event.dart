@@ -8,3 +8,5 @@ class SettingsEvent extends Equatable {
 }
 
 class SettingsInitialEvent extends SettingsEvent {}
+
+class LogOutEvent extends SettingsEvent {}

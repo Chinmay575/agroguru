@@ -1,5 +1,6 @@
 import 'package:agroguru/src/data/models/user.dart';
 import 'package:agroguru/src/domain/repository/user_repository.dart';
+import 'package:agroguru/src/utils/constants/enums/login_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -39,7 +40,9 @@ class AuthRepository {
     }
 
     if (user != null) {
-      curUser = UserAccount.fromUser(user);
+      curUser = await UserRepository.getUserData(user.uid) ??
+          UserAccount.fromUser(user);
+
       UserRepository.onUserCreated(curUser!);
       return true;
     }
@@ -57,7 +60,8 @@ class AuthRepository {
     );
     User? user = creds.user;
     if (user != null) {
-      curUser = UserAccount.fromUser(user);
+      curUser = await UserRepository.getUserData(user.uid) ??
+          UserAccount.fromUser(user);
       UserRepository.onUserCreated(curUser!);
       return true;
     }
@@ -134,5 +138,27 @@ class AuthRepository {
         }
       },
     );
+  }
+
+  static Future logOut() async {
+    curUser = null;
+    isAuthenticated = false;
+    await auth.signOut();
+  }
+
+  static LoginType? getAuthProvider() {
+    try {
+      print(auth.currentUser?.providerData[0]);
+      String? data =
+          auth.currentUser?.providerData[0].providerId.split('.').first;
+      if (data?.isNotEmpty ?? false) {
+        LoginType? type =
+            LoginType.values.firstWhere((element) => element.name == data);
+        return type;
+      }
+    } on Exception catch (e) {
+      print(e);
+    }
+    return null;
   }
 }

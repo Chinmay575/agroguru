@@ -27,7 +27,7 @@ class _FeedPageState extends State<FeedPage> {
               width: 336.w,
               margin: EdgeInsets.symmetric(vertical: 16.h, horizontal: 27.w),
               child: CustomTextField(
-                hintText: 'Search',
+                hintText: 'Search ....',
                 onChanged: (val) {},
               ),
             ),

@@ -8,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LabelledTextField extends StatelessWidget {
   String hintText;
   String label;
-  void Function(String) onChanged;
+  TextEditingController? controller;
+  void Function(String)? onChanged;
   LabelledTextField({
     Key? key,
     required this.hintText,
     required this.label,
-    required this.onChanged,
+    this.onChanged,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -27,16 +29,16 @@ class LabelledTextField extends StatelessWidget {
             bottom: 8.h,
             left: 29.w,
           ),
-          child: Text(
-            label,
-            style: TextStyles.body()
-          ),
+          child: Text(label, style: TextStyles.body()),
         ),
         CustomTextField(
           onChanged: onChanged,
           hintText: hintText,
+          controller: controller,
         ),
-        SizedBox(height: 8.h,)
+        SizedBox(
+          height: 8.h,
+        )
       ],
     );
   }

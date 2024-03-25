@@ -1,9 +1,15 @@
 import 'package:agroguru/firebase_options.dart';
+import 'package:agroguru/src/config/global.dart';
 import 'package:agroguru/src/data/models/route.dart';
 import 'package:agroguru/src/domain/repository/auth_repository.dart';
+import 'package:agroguru/src/presentation/common/camera.dart';
 import 'package:agroguru/src/presentation/error/error_page.dart';
 import 'package:agroguru/src/presentation/feed/feed_page.dart';
 import 'package:agroguru/src/presentation/create_post/create_post_page.dart';
+import 'package:agroguru/src/presentation/guide/bloc/guide_bloc.dart';
+import 'package:agroguru/src/presentation/guide/bloc/plant_detail_bloc.dart';
+import 'package:agroguru/src/presentation/guide/guide_page.dart';
+import 'package:agroguru/src/presentation/guide/views/plant_detail_page.dart';
 import 'package:agroguru/src/presentation/home/bloc/home_bloc.dart';
 import 'package:agroguru/src/presentation/home/home_page.dart';
 import 'package:agroguru/src/presentation/login/bloc/login_bloc.dart';
@@ -12,11 +18,18 @@ import 'package:agroguru/src/presentation/login/views/email_login.dart';
 import 'package:agroguru/src/presentation/login/views/verify_email.dart';
 import 'package:agroguru/src/presentation/navigation/bloc/navigation_bloc.dart';
 import 'package:agroguru/src/presentation/navigation/navigation_page.dart';
+import 'package:agroguru/src/presentation/plantcare/views/leaf_input_page.dart';
+import 'package:agroguru/src/presentation/plantcare/views/plant_care_home_page.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/profile/profile_page.dart';
+import 'package:agroguru/src/presentation/profile/views/update_profile_page.dart';
 import 'package:agroguru/src/presentation/register/register_page.dart';
-import 'package:agroguru/src/presentation/settings/bloc/settings_bloc.dart';
+import 'package:agroguru/src/presentation/schemes/schemes_page.dart';
+import 'package:agroguru/src/presentation/schemes/views/detailed_schemes_page.dart';
 import 'package:agroguru/src/presentation/settings/settings_page.dart';
+import 'package:agroguru/src/presentation/settings/views/about_us_page.dart';
+import 'package:agroguru/src/presentation/settings/views/feed_back_page.dart';
+import 'package:agroguru/src/presentation/settings/views/preferences_page.dart';
 import 'package:agroguru/src/presentation/store/store_page.dart';
 import 'package:agroguru/src/presentation/weather/bloc/weather_bloc.dart';
 import 'package:agroguru/src/presentation/weather/weather_page.dart';
@@ -76,7 +89,7 @@ class AppRouter {
         ),
         AppRoute(
           name: Routes.store,
-          view: const StorePage(),
+          view: StorePage(),
         ),
         AppRoute(
           name: Routes.feed,
@@ -85,6 +98,50 @@ class AppRouter {
         AppRoute(
           name: Routes.createPost,
           view: const CreatePostPage(),
+        ),
+        AppRoute(
+          name: Routes.camera,
+          view: const CameraPage(),
+        ),
+        AppRoute(
+          name: Routes.guide,
+          view: const GuidePage(),
+        ),
+        AppRoute(
+          name: Routes.plantDetail,
+          view: const PlantDetailPage(),
+        ),
+        AppRoute(
+          name: Routes.plantCareHome,
+          view: const PlantCareHomePage(),
+        ),
+        AppRoute(
+          name: Routes.leafInput,
+          view: const LeafInputPage(),
+        ),
+        AppRoute(
+          name: Routes.updateProfile,
+          view: const UpdateProfilePage(),
+        ),
+        AppRoute(
+          name: Routes.schemes,
+          view: const SchemesPage(),
+        ),
+        AppRoute(
+          name: Routes.detailedScheme,
+          view: const DetailedSchemesPage(),
+        ),
+        AppRoute(
+          name: Routes.preferences,
+          view: const PreferencesPage(),
+        ),
+        AppRoute(
+          name: Routes.about,
+          view: const AboutUsPage(),
+        ),
+        AppRoute(
+          name: Routes.feedback,
+          view: const FeedBackPage(),
         ),
       ];
 
@@ -113,6 +170,7 @@ class AppRouter {
       }
       List<String> pages = [
         Routes.home,
+        Routes.store,
       ];
       if (pages.contains(nextRoute)) {
         nextRoute = Routes.navigationFrame;
@@ -149,10 +207,16 @@ class AppRouter {
           create: (context) => CreatePostBloc(),
         ),
         BlocProvider(
-          create: (context) => SettingsBloc()..add(SettingsInitialEvent()),
+          create: (context) => PlantDetailBloc(),
         ),
         BlocProvider(
           create: (context) => ProfileBloc()..add(ProfileInitialEvent()),
+        ),
+        // BlocProvider(
+        //   create: (context) => SettingsBloc()..add(SettingsInitialEvent()),
+        // ),
+        BlocProvider(
+          create: (context) => GuideBloc()..add(GetPlantData()),
         ),
       ];
 
@@ -163,13 +227,8 @@ class AppRouter {
       options: DefaultFirebaseOptions.currentPlatform,
     );
 
-    // await AuthRepository.auth.signOut();
     await AuthRepository.checkAuthStatus();
 
-    // print(AuthRepository.isAuthenticated);
-
-    // print(AuthRepository.curUser?.toMap());
-
-    // print(await LocationRepository.getCurrentCity());
+    await Global.init();
   }
 }

@@ -2,7 +2,7 @@
 part of 'login_bloc.dart';
 
 class LoginState {
-  LoginType loginType = LoginType.email;
+  LoginType loginType = LoginType.password;
   AuthStatus status = AuthStatus.notStarted;
   LoginState({
     required this.loginType,

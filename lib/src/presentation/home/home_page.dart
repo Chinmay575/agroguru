@@ -1,127 +1,151 @@
-import 'package:agroguru/src/presentation/common/text_field.dart';
+import 'package:agroguru/src/presentation/home/widgets/service_tile.dart';
+import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/weather/widgets/weather_widget.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
 import 'package:agroguru/src/utils/constants/strings/strings.dart';
-import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hexcolor/hexcolor.dart';
+
+import '../../utils/styles/text_styles.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var profileState = BlocProvider.of<ProfileBloc>(context).state;
+    print(profileState.acc?.toMap());
+
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(390.w, 96.h),
+        preferredSize: Size(390.w, 64.h),
         child: AppBar(
+          // backgroundColor: Colors.amber,
           automaticallyImplyLeading: false,
-          flexibleSpace: SafeArea(
-            child: Container(
-              height: 64.h,
-              width: 336.w,
-              margin: EdgeInsets.symmetric(vertical: 16.h, horizontal: 27.w),
-              child: CustomTextField(
-                hintText: 'Search for Crop',
-                onChanged: (val) {},
-              ),
+          title: Container(
+            height: 64.h,
+            // padding: EdgeInsets.symmetric(horizontal: 17.w),
+            // color: Colors.red,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.profile);
+                  },
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(32.r),
+                        child: CircleAvatar(
+                          child: Image.network(
+                            height: 48.w,
+                            width: 48.w,
+                            (profileState.acc?.displayPic) ?? Strings.avatar,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16.w,
+                      ),
+                      Text(
+                        profileState.acc?.name ?? '',
+                        style: TextStyles.body(),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.settings);
+                  },
+                  padding: EdgeInsets.zero,
+                  icon: Icon(Icons.settings),
+                ),
+              ],
             ),
           ),
-          toolbarHeight: 64.h,
-          titleSpacing: 0.h,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 27.w, vertical: 16.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Welcome Back!',
-                style: TextStyles.heading4(),
+      body: SafeArea(
+        child: CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              floating: true,
+              primary: true,
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.transparent,
+              toolbarHeight: 96.h,
+              foregroundColor: Colors.transparent,
+              flexibleSpace: Center(
+                child: Container(
+                  height: 64.h,
+                  width: 390.w,
+                  margin: EdgeInsets.symmetric(horizontal: 27.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 32.w, vertical: 20.w),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(64.r),
+                  ),
+                  child: Text(
+                    'Search',
+                    style: TextStyles.body(
+                      color: HexColor('#80131513'),
+                    ),
+                  ),
+                ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 16.h),
+              // title:
+              forceMaterialTransparency: true,
+              centerTitle: true,
+              elevation: 0,
+              shadowColor: Colors.white,
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 27.w,
+                  vertical: 32.h,
+                ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Weather',
-                          style: TextStyles.heading5(),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.arrow_forward),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8.h,
-                    ),
                     const WeatherWidget(),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 16.h),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Services',
-                          style: TextStyles.heading5(),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.arrow_forward),
-                        )
-                      ],
+                    ServicesTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.plantCareHome);
+                      },
+                      image: Strings.leaf,
+                      title: 'Plant Care',
                     ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      // color: Colors.green,
-                      child: GridView(
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisExtent: 128.h,
-                        ),
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(8.h),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  height: 64.h,
-                                  width: 64.w,
-                                  padding: EdgeInsets.all(8.h),
-                                  // color: Colors.amber,
-                                  child: Image.network(
-                                    Strings.leaf,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                                Text('Plant Care',style: TextStyles.body(),)
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.medical_services_sharp),
-                          const Icon(Icons.medical_services_sharp),
-                          // const Icon(Icons.medical_services_sharp),
-                        ],
-                      ),
+                    ServicesTile(
+                      onTap: () {},
+                      image: Strings.schemes,
+                      title: 'Government Schemes',
+                    ),
+                    ServicesTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.guide);
+                      },
+                      image: Strings.guide,
+                      title: 'Agriculture Guide',
+                    ),
+                    ServicesTile(
+                      onTap: () {},
+                      image: Strings.aiIcon,
+                      title: 'AI Assistant',
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

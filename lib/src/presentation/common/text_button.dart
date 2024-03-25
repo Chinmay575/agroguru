@@ -9,12 +9,14 @@ class CustomTextButton extends StatelessWidget {
   Color color;
   Color? textColor;
   double? width;
+  EdgeInsets? margin;
   CustomTextButton({
     Key? key,
     required this.onPressed,
     required this.text,
     this.textColor,
     this.width,
+    this.margin,
     required this.color,
   }) : super(key: key);
 
@@ -24,18 +26,21 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     // deviceHeight = MediaQuery.of(context).size.height;
     // deviceWidth = MediaQuery.of(context).size.width;
-    return MaterialButton(
-      elevation: 0,
-      minWidth: width ?? 320.w,
-      height: 64.h,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(32.r),
-      ),
-      onPressed: onPressed,
-      color: color,
-      child: Text(
-        text,
-        style: TextStyles.heading6(color: textColor ?? Colors.black),
+    return Container(
+      margin: margin,
+      child: MaterialButton(
+        elevation: 0,
+        minWidth: width ?? 320.w,
+        height: 64.h,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32.r),
+        ),
+        onPressed: onPressed,
+        color: color,
+        child: Text(
+          text,
+          style: TextStyles.heading6(color: textColor ?? Colors.black),
+        ),
       ),
     );
   }

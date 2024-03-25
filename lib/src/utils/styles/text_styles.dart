@@ -9,7 +9,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 61.h,
+        fontSize: 61.sp,
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -23,7 +23,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 49.h,
+        fontSize: 49.sp,
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -36,7 +36,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 39.h,
+        fontSize: 39.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -49,7 +49,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 31.h,
+        fontSize: 31.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -62,7 +62,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 25.h,
+        fontSize: 25.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -75,7 +75,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 20.h,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -88,7 +88,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 16.h,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,
@@ -101,7 +101,7 @@ class TextStyles {
   }) =>
       TextStyle(
         fontFamily: 'Lato',
-        fontSize: 13.h,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,

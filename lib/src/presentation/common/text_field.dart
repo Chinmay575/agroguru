@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CustomTextField extends StatelessWidget {
-  void Function(String) onChanged;
+  void Function(String)? onChanged;
+  void Function()? onEditingComplete;
   String hintText;
   double? height;
   double? width;
@@ -21,11 +22,13 @@ class CustomTextField extends StatelessWidget {
   int? maxLength;
   int? maxLines;
   TextAlign? textAlign;
+  TextEditingController? controller;
   FocusNode? focusNode;
   CustomTextField({
     Key? key,
-    required this.onChanged,
+    this.onChanged,
     required this.hintText,
+    this.controller,
     this.height,
     this.width,
     this.validator,
@@ -35,11 +38,12 @@ class CustomTextField extends StatelessWidget {
     this.filled,
     this.contentPadding,
     this.borderRadius,
-    this.keyboardType, 
-    this.maxLength, 
-    this.maxLines, 
+    this.keyboardType,
+    this.maxLength,
+    this.maxLines,
     this.textAlign,
-    this.focusNode,  
+    this.focusNode,
+    this.onEditingComplete, 
   }) : super(key: key);
 
   @override
@@ -51,13 +55,14 @@ class CustomTextField extends StatelessWidget {
       padding: padding,
       child: TextFormField(
         onChanged: onChanged,
+        onEditingComplete: onEditingComplete,
         textAlign: textAlign ?? TextAlign.start,
         style: TextStyles.body(),
         maxLength: maxLength,
         maxLines: maxLines,
         focusNode: focusNode,
         keyboardType: keyboardType ?? TextInputType.text,
-        
+        controller: controller,
         decoration: InputDecoration(
           counter: null,
           counterText: '',
@@ -65,8 +70,8 @@ class CustomTextField extends StatelessWidget {
           border: normalBorder(),
           contentPadding: contentPadding ??
               EdgeInsets.only(
-                top: 22.h,
-                bottom: 23.h,
+                top: 20.h,
+                bottom: 20.h,
                 left: 29.w,
                 right: 36.w,
               ),

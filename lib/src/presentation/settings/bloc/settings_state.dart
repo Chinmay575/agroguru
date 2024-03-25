@@ -18,3 +18,7 @@ class SettingsState extends Equatable {
     );
   }
 }
+
+class LoggedOutState extends SettingsState {
+  LoggedOutState() : super(image: '');
+}

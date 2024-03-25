@@ -11,3 +11,8 @@ class ChangeLoginMethod extends LoginEvent {
 }
 
 class LoginUsingGoogle extends LoginEvent {}
+
+class LoginUsingEmailEvent extends LoginEvent {
+  String email,password;
+  LoginUsingEmailEvent(this.email,this.password) : super();
+}

@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:flutter/cupertino.dart';
+import 'package:agroguru/src/presentation/home/home_page.dart';
+import 'package:agroguru/src/presentation/store/store_page.dart';
+import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,12 +11,10 @@ import 'package:hexcolor/hexcolor.dart';
 import '../navigation/bloc/navigation_bloc.dart';
 
 class NavigatorFrame extends StatefulWidget {
-  Widget body;
   int curIndex;
   NavigatorFrame({
     Key? key,
     required this.curIndex,
-    required this.body,
   }) : super(key: key);
 
   @override
@@ -23,96 +23,109 @@ class NavigatorFrame extends StatefulWidget {
 
 class _NavigatorFrameState extends State<NavigatorFrame> {
   List<Widget> actions(int curIndex) => [
-        IconButton(
-          onPressed: () {
+        navigatorButton(
+          icon: Icons.home,
+          name: "Home",
+          onTap: () {
+            pageController.animateToPage(
+              0,
+              curve: Curves.linear,
+              duration: Durations.medium2,
+            );
             BlocProvider.of<NavigationBloc>(context).add(
               PushPageEvent(index: 0),
             );
-            // BlocProvider.of<WeatherBloc>(context).add(WeatherInitialEvent());
           },
-          icon: Icon(
-            CupertinoIcons.home,
-            color: (curIndex == 0) ? Colors.green : Colors.black,
-          ),
+          isActive: (curIndex == 0),
         ),
-        IconButton(
-          onPressed: (curIndex == 1)
-              ? () {}
-              : () {
-                  BlocProvider.of<NavigationBloc>(context).add(
-                    PushPageEvent(
-                      index: 1,
-                    ),
-                  );
-                },
-          icon: Icon(
-            CupertinoIcons.archivebox,
-            color: (curIndex == 1) ? Colors.green : Colors.black,
-          ),
-        ),
-        IconButton(
-          onPressed: (curIndex == 2)
-              ? () {}
-              : () {
-                  BlocProvider.of<NavigationBloc>(context).add(
-                    PushPageEvent(
-                      index: 2,
-                    ),
-                  );
-                },
-          icon: Icon(
-            CupertinoIcons.doc,
-            color: (curIndex == 2) ? Colors.green : Colors.black,
-          ),
-        ),
-        IconButton(
-          onPressed: () {
-            BlocProvider.of<NavigationBloc>(context).add(
-              PushPageEvent(
-                index: 3,
-              ),
+        navigatorButton(
+          icon: Icons.storefront,
+          name: "Store",
+          onTap: () {
+            pageController.animateToPage(
+              1,
+              curve: Curves.linear,
+              duration: Durations.medium2,
             );
-            // BlocProvider.of<ProfileBloc>(context).add(ShowProfile());
-          },
-          icon: Icon(
-            CupertinoIcons.bell,
-            color: (curIndex == 3) ? Colors.green : Colors.black,
-          ),
-        ),
-        IconButton(
-          onPressed: () {
             BlocProvider.of<NavigationBloc>(context).add(
-              PushPageEvent(
-                index: 4,
-              ),
+              PushPageEvent(index: 1),
             );
-            // BlocProvider.of<ProfileBloc>(context).add(ShowProfile());
           },
-          icon: Icon(
-            CupertinoIcons.settings,
-            color: (curIndex == 4) ? Colors.green : Colors.black,
-          ),
+          isActive: (curIndex == 1),
         ),
       ];
+
+  Widget navigatorButton({
+    required IconData icon,
+    required String name,
+    required void Function() onTap,
+    required bool isActive,
+  }) {
+    return GestureDetector(
+      onTap: (isActive) ? () {} : onTap,
+      child: Container(
+        height: 40.h,
+        // width: 118.w,
+        margin: EdgeInsets.symmetric(vertical: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        decoration: BoxDecoration(
+          color: (isActive) ? HexColor('#4021A366') : Colors.transparent,
+          borderRadius: BorderRadius.circular(32.r),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.h),
+              child: Icon(
+                icon,
+                size: 20.h,
+                color: (isActive) ? HexColor('#21A366') : Colors.black,
+              ),
+            ),
+            Text(
+              name,
+              style: TextStyles.body(
+                color: (isActive) ? HexColor('#21A366') : Colors.black,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: widget.body,
+      body: PageView(
+        onPageChanged: (value) {
+          BlocProvider.of<NavigationBloc>(context).add(
+            PushPageEvent(index: value),
+          );
+        },
+        controller: pageController,
+        children: [
+          const HomePage(),
+          StorePage(),
+        ],
+      ),
       bottomNavigationBar: BottomAppBar(
         elevation: 8,
-        // height: 64.h,
-        shadowColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        color: Colors.transparent,
+        height: 88.h,
+        surfaceTintColor: Colors.white,
+        padding: EdgeInsets.zero,
         child: Container(
-          height: 64.h,
-          width: 336.w,
+          width: 390.w,
           decoration: BoxDecoration(
-            color: HexColor('#1315131A'),
-            // color: Colors.transparent,
-            borderRadius: BorderRadius.circular(15),
+            border: Border(
+              top: BorderSide(
+                width: 3.w,
+                color: HexColor('#131513BF'),
+              ),
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -120,6 +133,18 @@ class _NavigatorFrameState extends State<NavigatorFrame> {
           ),
         ),
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home_filled),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.storefront_rounded),
+      //       label: 'Store',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

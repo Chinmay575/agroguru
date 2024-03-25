@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
         print(state.status.toString());
         if (state.status == AuthStatus.success) {
           Navigator.pushReplacementNamed(context, Routes.home);
+          // BlocProvider.of<ProfileBloc>(context).add(ProfileInitialEvent());
         }
       },
       builder: (context, state) {

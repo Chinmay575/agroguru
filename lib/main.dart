@@ -1,6 +1,5 @@
 import 'package:agroguru/src/config/router.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
-import 'package:agroguru/src/utils/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'AgroGuru',
-          theme: lightTheme,
+          // theme: lightTheme,
           initialRoute: Routes.login,
           onGenerateRoute: AppRouter.onGenerateRoute,
           locale: const Locale('en'),

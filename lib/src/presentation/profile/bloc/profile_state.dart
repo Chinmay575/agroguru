@@ -2,15 +2,27 @@
 part of 'profile_bloc.dart';
 
 class ProfileState extends Equatable {
-  UserAccount acc;
+  UserAccount? acc;
+  LoginType? type;
   ProfileState({
-    required this.acc,
+    this.acc,
+    this.type, 
   });
 
   @override
   List<Object> get props => [];
+
+  ProfileState copyWith({
+    UserAccount? acc,
+    LoginType? type,
+  }) {
+    return ProfileState(
+      acc: acc ?? this.acc,
+      type: type ?? this.type, 
+    );
+  }
 }
 
 class ProfileInitial extends ProfileState {
-  ProfileInitial(UserAccount acc) : super(acc: acc);
+  ProfileInitial() : super();
 }

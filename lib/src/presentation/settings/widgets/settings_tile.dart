@@ -2,31 +2,59 @@
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SettingsTile extends StatelessWidget {
-  IconData leading;
+  String image;
   String title;
   void Function() onTap;
+  bool isLast;
   SettingsTile({
     Key? key,
-    required this.leading,
+    required this.image,
     required this.title,
     required this.onTap,
+    this.isLast = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      style: ListTileStyle.list,
-      leading: Icon(leading),
-      title: Text(
-        title,
-        style: TextStyles.heading6(),
-      ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 8.w),
+    return GestureDetector(
       onTap: onTap,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.w),
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: 32.h,
+                  width: 32.h,
+                  margin: EdgeInsets.only(left: 8.w, right: 16.w),
+                  child: Image.network(
+                    image,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                Text(
+                  title,
+                  style: TextStyles.heading6(),
+                  overflow: TextOverflow.fade,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            (isLast)
+                ? Container()
+                : Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    child: Divider(
+                      height: 1.h,
+                      color: HexColor('#1315130D'),
+                    ),
+                  ),
+          ],
+        ),
       ),
     );
   }

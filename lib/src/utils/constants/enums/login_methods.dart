@@ -1,4 +1,4 @@
-enum LoginType { email, google, phone }
+enum LoginType { password, google, unknown }
 
 LoginType? toLoginType(String str) {
   try {

@@ -1,5 +1,10 @@
-import 'package:agroguru/src/presentation/common/text_field.dart';
+// ignore_for_file: must_be_immutable
+
+import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
+import 'package:agroguru/src/utils/constants/enums/login_methods.dart';
+import 'package:agroguru/src/utils/constants/strings/routes.dart';
+import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(64.h),
                       child: Image.network(
-                        state.acc.displayPic,
+                        state.acc?.displayPic ?? Strings.avatar,
                         height: 128.h,
                         width: 128.h,
                         fit: BoxFit.cover,
@@ -49,15 +54,23 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          state.acc.email,
+                          state.acc?.email ?? '',
                           style: TextStyles.heading6(),
                         ),
                         Padding(
                           padding: EdgeInsets.all(8.h),
-                          child: Icon(
-                            Icons.verified,
-                            color: Colors.green,
-                          ),
+                          child: (state.acc?.isVerified ?? false)
+                              ? const Icon(
+                                  Icons.verified,
+                                  color: Colors.green,
+                                )
+                              : GestureDetector(
+                                  onTap: () {},
+                                  child: const Icon(
+                                    Icons.cancel,
+                                    color: Colors.red,
+                                  ),
+                                ),
                         )
                       ],
                     ),
@@ -65,16 +78,31 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  CustomTextField(
-                    onChanged: (val) {},
-                    hintText: 'Name',
+                  CustomTextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.updateProfile);
+                    },
+                    textColor: Colors.white,
+                    text: 'Update Profile',
+                    color: Colors.green,
                   ),
+                  (state.type != LoginType.google)
+                      ? CustomTextButton(
+                          margin: EdgeInsets.only(top: 16.h),
+                          onPressed: () {},
+                          textColor: Colors.white,
+                          text: 'Change Password',
+                          color: Colors.green,
+                        )
+                      : Container(),
                   SizedBox(
                     height: 16.h,
                   ),
-                  CustomTextField(
-                    onChanged: (val) {},
-                    hintText: 'Phone',
+                  CustomTextButton(
+                    onPressed: () {},
+                    textColor: Colors.white,
+                    text: 'Request Account Deactivation',
+                    color: Colors.green,
                   ),
                 ],
               ),

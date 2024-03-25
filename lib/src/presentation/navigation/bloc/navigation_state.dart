@@ -3,6 +3,7 @@
 part of 'navigation_bloc.dart';
 
 class NavigationState extends Equatable {
+  PageController controller = PageController();
   int index;
   Map<int, int> history;
   NavigationState({
