@@ -12,6 +12,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(ProfileInitial()) {
     on<ProfileInitialEvent>(
       (event, emit) {
+        print('Initial Event Triggered');
         LoginType? type = AuthRepository.getAuthProvider();
         emit(
           ProfileState(
@@ -24,21 +25,29 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     on<UpdateProfileEvent>(
       (event, emit) async {
-        await UserRepository.updateUserData(acc: event.user);
-        AuthRepository.curUser = event.user;
-
-        emit(
-          state.copyWith(acc: event.user),
+        await UserRepository.updateUserData(acc: event.user).then(
+          (value) {
+            AuthRepository.curUser = event.user;
+            emit(
+              state.copyWith(acc: event.user),
+            );
+            print(AuthRepository.curUser);
+            print(state.acc?.toMap());
+          },
         );
+
         print('User updated');
       },
     );
 
     on<ProfileLogOutEvent>(
       (event, emit) {
+        print('Logged out event triggered');
         emit(
           state.copyWith(acc: null, type: null),
         );
+        print(state.acc?.toMap());
+        emit(ProfileInitial());
       },
     );
   }

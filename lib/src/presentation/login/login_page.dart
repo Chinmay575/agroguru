@@ -29,10 +29,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
+        
         print(state.status.toString());
         if (state.status == AuthStatus.success) {
           Navigator.pushReplacementNamed(context, Routes.home);
-          // BlocProvider.of<ProfileBloc>(context).add(ProfileInitialEvent());
+        
         }
       },
       builder: (context, state) {

@@ -31,20 +31,14 @@ class AuthRepository {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'account-exists-with-different-credential') {
-        } else if (e.code == 'invalid-credential') {}
       } catch (e) {
         print(e);
       }
     }
 
     if (user != null) {
-      curUser = await UserRepository.getUserData(user.uid) ??
-          UserAccount.fromUser(user);
-
-      UserRepository.onUserCreated(curUser!);
-      return true;
+      curUser = await UserRepository.getUserData(user.uid);
+      if (curUser != null) return true;
     }
 
     return false;
@@ -54,16 +48,19 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    UserCredential creds = await auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    User? user = creds.user;
-    if (user != null) {
-      curUser = await UserRepository.getUserData(user.uid) ??
-          UserAccount.fromUser(user);
-      UserRepository.onUserCreated(curUser!);
-      return true;
+    try {
+      UserCredential creds = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      User? user = creds.user;
+      if (user != null) {
+        curUser = await UserRepository.getUserData(user.uid);
+        print(curUser?.toMap());
+        return true;
+      }
+    } on Exception catch (e) {
+      print(e);
     }
     return false;
   }
@@ -129,12 +126,18 @@ class AuthRepository {
   }
 
   static Future checkAuthStatus() async {
-    auth.authStateChanges().listen(
-      (User? user) {
+    await auth.authStateChanges().listen(
+      (User? user) async {
         if (user != null) {
+          print(user.email);
           isAuthenticated = true;
-          curUser = UserAccount.fromUser(user);
-          // print(user.email);
+          await UserRepository.getUserData(user.uid).then(
+            (value) {
+              curUser = value;
+              print("data fetched");
+            },
+          );
+          print(curUser?.toMap());
         }
       },
     );
@@ -148,7 +151,7 @@ class AuthRepository {
 
   static LoginType? getAuthProvider() {
     try {
-      print(auth.currentUser?.providerData[0]);
+      // print(auth.currentUser?.providerData[0]);
       String? data =
           auth.currentUser?.providerData[0].providerId.split('.').first;
       if (data?.isNotEmpty ?? false) {

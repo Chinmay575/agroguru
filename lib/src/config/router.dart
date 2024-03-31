@@ -2,6 +2,8 @@ import 'package:agroguru/firebase_options.dart';
 import 'package:agroguru/src/config/global.dart';
 import 'package:agroguru/src/data/models/route.dart';
 import 'package:agroguru/src/domain/repository/auth_repository.dart';
+import 'package:agroguru/src/presentation/ai_assistant/ai_assistant_page.dart';
+import 'package:agroguru/src/presentation/ai_assistant/bloc/ai_bloc.dart';
 import 'package:agroguru/src/presentation/common/camera.dart';
 import 'package:agroguru/src/presentation/error/error_page.dart';
 import 'package:agroguru/src/presentation/feed/feed_page.dart';
@@ -24,12 +26,14 @@ import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/profile/profile_page.dart';
 import 'package:agroguru/src/presentation/profile/views/update_profile_page.dart';
 import 'package:agroguru/src/presentation/register/register_page.dart';
+import 'package:agroguru/src/presentation/schemes/bloc/schemes_bloc.dart';
 import 'package:agroguru/src/presentation/schemes/schemes_page.dart';
 import 'package:agroguru/src/presentation/schemes/views/detailed_schemes_page.dart';
 import 'package:agroguru/src/presentation/settings/settings_page.dart';
 import 'package:agroguru/src/presentation/settings/views/about_us_page.dart';
 import 'package:agroguru/src/presentation/settings/views/feed_back_page.dart';
 import 'package:agroguru/src/presentation/settings/views/preferences_page.dart';
+import 'package:agroguru/src/presentation/splash/splash_page.dart';
 import 'package:agroguru/src/presentation/store/store_page.dart';
 import 'package:agroguru/src/presentation/weather/bloc/weather_bloc.dart';
 import 'package:agroguru/src/presentation/weather/weather_page.dart';
@@ -143,6 +147,14 @@ class AppRouter {
           name: Routes.feedback,
           view: const FeedBackPage(),
         ),
+        AppRoute(
+          name: Routes.assistant,
+          view: const AiAssistantPage(),
+        ),
+        AppRoute(
+          name: Routes.splash,
+          view: const SplashScreen(),
+        ),
       ];
 
   static Route onGenerateRoute(RouteSettings settings) {
@@ -175,7 +187,7 @@ class AppRouter {
       if (pages.contains(nextRoute)) {
         nextRoute = Routes.navigationFrame;
       }
-
+      print(nextRoute);
       Iterable<AppRoute> result =
           routes().where((element) => element.name == nextRoute);
 
@@ -212,11 +224,14 @@ class AppRouter {
         BlocProvider(
           create: (context) => ProfileBloc()..add(ProfileInitialEvent()),
         ),
-        // BlocProvider(
-        //   create: (context) => SettingsBloc()..add(SettingsInitialEvent()),
-        // ),
+        BlocProvider(
+          create: (context) => AiBloc(),
+        ),
         BlocProvider(
           create: (context) => GuideBloc()..add(GetPlantData()),
+        ),
+         BlocProvider(
+          create: (context) => SchemesBloc()..add(GetSchemesEvent()),
         ),
       ];
 
@@ -229,6 +244,8 @@ class AppRouter {
 
     await AuthRepository.checkAuthStatus();
 
+    print( 'Cur User: ${AuthRepository.curUser?.toMap()}');
+    print(AuthRepository.isAuthenticated);
     await Global.init();
   }
 }

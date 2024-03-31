@@ -91,7 +91,7 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                               height: 8.h,
                             ),
                             Text(
-                              'Genus is ${state.p?.genus}',
+                              'Belongs to ${state.p?.genus} genus',
                               style: TextStyles.body(),
                             ),
                             SizedBox(
@@ -106,6 +106,20 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                             ),
                             Text(
                               'Requires an average temprature of ${state.p?.avgTemp}  \u2103',
+                              style: TextStyles.body(),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              'Harvested in the months of ${state.p?.harvestMonth}',
+                              style: TextStyles.body(),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              'Takes ${state.p?.harvestTime} days to grow',
                               style: TextStyles.body(),
                             ),
                             SizedBox(

@@ -10,65 +10,125 @@ import 'package:hexcolor/hexcolor.dart';
 
 import '../../utils/styles/text_styles.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var profileState = BlocProvider.of<ProfileBloc>(context).state;
-    print(profileState.acc?.toMap());
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    print('Init called');
+    BlocProvider.of<ProfileBloc>(context).add(ProfileInitialEvent());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(390.w, 64.h),
-        child: AppBar(
-          // backgroundColor: Colors.amber,
-          automaticallyImplyLeading: false,
-          title: Container(
-            height: 64.h,
-            // padding: EdgeInsets.symmetric(horizontal: 17.w),
-            // color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, Routes.profile);
-                  },
+        child: BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            print(state.acc?.toMap());
+            if (state is ProfileInitial) {
+              return AppBar(
+                automaticallyImplyLeading: false,
+                title: Container(
+                  height: 64.h,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(32.r),
-                        child: CircleAvatar(
-                          child: Image.network(
-                            height: 48.w,
-                            width: 48.w,
-                            (profileState.acc?.displayPic) ?? Strings.avatar,
-                            fit: BoxFit.contain,
-                          ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.profile);
+                        },
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(32.r),
+                              child: CircleAvatar(
+                                child: Image.network(
+                                  height: 48.w,
+                                  width: 48.w,
+                                  Strings.avatar,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 16.w,
+                            ),
+                            Text(
+                              'User',
+                              style: TextStyles.body(),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        width: 16.w,
-                      ),
-                      Text(
-                        profileState.acc?.name ?? '',
-                        style: TextStyles.body(),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.settings);
+                        },
+                        padding: EdgeInsets.zero,
+                        icon: Icon(Icons.settings),
                       ),
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.settings);
-                  },
-                  padding: EdgeInsets.zero,
-                  icon: Icon(Icons.settings),
+              );
+            }
+            return AppBar(
+              automaticallyImplyLeading: false,
+              title: Container(
+                height: 64.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.profile);
+                      },
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(32.r),
+                            child: CircleAvatar(
+                              child: Image.network(
+                                height: 48.w,
+                                width: 48.w,
+                                (state.acc?.displayPic ?? Strings.avatar),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                          ),
+                          Text(
+                            state.acc?.name ?? 'User',
+                            style: TextStyles.body(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.settings);
+                      },
+                      padding: EdgeInsets.zero,
+                      icon: Icon(Icons.settings),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
       body: SafeArea(
@@ -125,7 +185,9 @@ class HomePage extends StatelessWidget {
                       title: 'Plant Care',
                     ),
                     ServicesTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.schemes);
+                      },
                       image: Strings.schemes,
                       title: 'Government Schemes',
                     ),
@@ -137,7 +199,9 @@ class HomePage extends StatelessWidget {
                       title: 'Agriculture Guide',
                     ),
                     ServicesTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.assistant);
+                      },
                       image: Strings.aiIcon,
                       title: 'AI Assistant',
                     ),

@@ -57,4 +57,9 @@ class Strings {
       'https://img.icons8.com/fluency/96/day-and-night.png';
 
   static String youtube = 'https://img.icons8.com/color/96/youtube-play.png';
+
+  static String pdf = 'https://img.icons8.com/fluency/96/pdf.png';
+
+  static String link = 'https://img.icons8.com/fluency/96/link.png';
+
 }

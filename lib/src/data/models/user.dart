@@ -1,10 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'dart:convert';
 
 import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UserAccount {
+class UserAccount extends Equatable {
   String id;
   String name;
   String email;
@@ -96,5 +97,20 @@ class UserAccount {
       createdAt: createdAt ?? this.createdAt,
       lastUpdated: createdAt ?? this.lastUpdated,
     );
+  }
+
+  @override
+  List<Object> get props {
+    return [
+      id,
+      name,
+      email,
+      displayPic,
+      phone,
+      isVerified,
+      address,
+      createdAt,
+      lastUpdated,
+    ];
   }
 }

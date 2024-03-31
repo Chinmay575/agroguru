@@ -1,4 +1,5 @@
 import 'package:agroguru/src/data/models/user.dart';
+import 'package:agroguru/src/domain/repository/auth_repository.dart';
 import 'package:agroguru/src/utils/constants/strings/collections.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -21,20 +22,23 @@ class UserRepository {
     }
   }
 
-  static Future<UserAccount?> getUserData(String id) async {
-    try {
-      DocumentReference ref = db.collection(Collections.users).doc(id);
+  static Future<UserAccount> getUserData(String id) async {
+    DocumentReference ref = db.collection(Collections.users).doc(id);
 
-      DocumentSnapshot snapshot = await ref.get();
+    DocumentSnapshot snapshot = await ref.get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-        return UserAccount.fromMap(data);
-      }
-    } catch (e) {
-      print(e);
+    if (snapshot.exists) {
+      print('Snapshot exists');
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      // print(data);
+      return UserAccount.fromMap(data);
+    } else {
+      print('Snapshot does not exists');
+      UserAccount acc = UserAccount.fromUser(AuthRepository.auth.currentUser!);
+
+      await ref.set(acc.toMap());
+      return acc;
     }
-    return null;
   }
 
   static Future<bool> updateUserData({required UserAccount acc}) async {

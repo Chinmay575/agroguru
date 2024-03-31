@@ -18,6 +18,7 @@ class ProfilePage extends StatelessWidget {
     return BlocConsumer<ProfileBloc, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
+        print(state.acc!.toMap());
         return Scaffold(
           appBar: AppBar(
             leading: const BackButton(),

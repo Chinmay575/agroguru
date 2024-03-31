@@ -1,5 +1,4 @@
 import 'package:agroguru/src/domain/repository/auth_repository.dart';
-import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/utils/constants/enums/auth_status.dart';
 import 'package:agroguru/src/utils/constants/enums/login_methods.dart';
 import 'package:bloc/bloc.dart';
@@ -28,7 +27,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       (event, emit) async {
         bool status = await AuthRepository.loginUsingGoogle();
         if (status) {
-          ProfileBloc().add(ProfileInitialEvent());
           emit(
             state.copyWith(
               status: AuthStatus.success,
@@ -52,7 +50,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           password: event.password,
         );
         if (status) {
-          ProfileBloc().add(ProfileInitialEvent());
           emit(
             state.copyWith(
               status: AuthStatus.success,

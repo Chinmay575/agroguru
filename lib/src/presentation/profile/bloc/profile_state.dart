@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+
 part of 'profile_bloc.dart';
 
 class ProfileState extends Equatable {
@@ -6,11 +7,8 @@ class ProfileState extends Equatable {
   LoginType? type;
   ProfileState({
     this.acc,
-    this.type, 
+    this.type,
   });
-
-  @override
-  List<Object> get props => [];
 
   ProfileState copyWith({
     UserAccount? acc,
@@ -18,9 +16,12 @@ class ProfileState extends Equatable {
   }) {
     return ProfileState(
       acc: acc ?? this.acc,
-      type: type ?? this.type, 
+      type: type ?? this.type,
     );
   }
+
+  @override
+  List<Object> get props => [acc!, type!];
 }
 
 class ProfileInitial extends ProfileState {

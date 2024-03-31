@@ -6,8 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future main() async {
-  await AppRouter.init();
-  runApp(const MyApp());
+  await AppRouter.init().then(
+    (_) {
+      runApp(const MyApp());
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'AgroGuru',
           // theme: lightTheme,
-          initialRoute: Routes.login,
+          initialRoute: Routes.splash,
           onGenerateRoute: AppRouter.onGenerateRoute,
           locale: const Locale('en'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,

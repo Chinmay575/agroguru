@@ -47,31 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDRS9sdT9imFEW7BRGUhquhilOvY5xkfDQ',
-    appId: '1:125457112288:web:8e0930b892d286c14b0485',
-    messagingSenderId: '125457112288',
-    projectId: 'agroguru-2850c',
-    authDomain: 'agroguru-2850c.firebaseapp.com',
-    storageBucket: 'agroguru-2850c.appspot.com',
-    measurementId: 'G-ZBR6613TNN',
+    apiKey: 'AIzaSyCTxkjBLQdZCwXK3OI3Qn9meFyUAAqIYMU',
+    appId: '1:301985586495:web:7ffd8bffa99a9d68af478a',
+    messagingSenderId: '301985586495',
+    projectId: 'agroguru-65f47',
+    authDomain: 'agroguru-65f47.firebaseapp.com',
+    storageBucket: 'agroguru-65f47.appspot.com',
+    measurementId: 'G-0BT6PFM2NQ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBHkh8v3UvblnfxLNltTy7CCBcCGKTK1Sw',
-    appId: '1:125457112288:android:cbebb8a21997de3d4b0485',
-    messagingSenderId: '125457112288',
-    projectId: 'agroguru-2850c',
-    storageBucket: 'agroguru-2850c.appspot.com',
+    apiKey: 'AIzaSyBNlp30cxR83hD7OK2fNVTvRSxBomsWAHY',
+    appId: '1:301985586495:android:41d8487b786bfbf7af478a',
+    messagingSenderId: '301985586495',
+    projectId: 'agroguru-65f47',
+    storageBucket: 'agroguru-65f47.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAa-nCljUL_P13FdAJRS5eASJd7_RrXZHc',
-    appId: '1:125457112288:ios:17f0aed53f332a034b0485',
-    messagingSenderId: '125457112288',
-    projectId: 'agroguru-2850c',
-    storageBucket: 'agroguru-2850c.appspot.com',
-    androidClientId: '125457112288-eikfbsu7cp0et4us2tib90s1ht35cn5e.apps.googleusercontent.com',
-    iosClientId: '125457112288-k2jkgbgak60qrro8ih6rpnae30vsnhl7.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCscTEtNHKQu44IjWYfvSc-HRDzwtuDr2w',
+    appId: '1:301985586495:ios:6afc1e804289ceccaf478a',
+    messagingSenderId: '301985586495',
+    projectId: 'agroguru-65f47',
+    storageBucket: 'agroguru-65f47.appspot.com',
     iosBundleId: 'com.example.agroguru',
   );
 }

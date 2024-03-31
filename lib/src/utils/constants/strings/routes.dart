@@ -48,4 +48,8 @@ class Routes {
   static String feedback = '/feedback';
 
   static String preferences = '/preferences';
+
+  static String assistant = '/assistant';
+
+  static String splash = '/splash';
 }

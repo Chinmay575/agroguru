@@ -1,42 +1,41 @@
 {
   "project_info": {
-    "project_number": "125457112288",
-    "project_id": "agroguru-2850c",
-    "storage_bucket": "agroguru-2850c.appspot.com"
+    "project_number": "301985586495",
+    "project_id": "agroguru-65f47",
+    "storage_bucket": "agroguru-65f47.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:125457112288:android:cbebb8a21997de3d4b0485",
+        "mobilesdk_app_id": "1:301985586495:android:41d8487b786bfbf7af478a",
         "android_client_info": {
           "package_name": "com.example.agroguru"
         }
       },
       "oauth_client": [
         {
-          "client_id": "125457112288-eikfbsu7cp0et4us2tib90s1ht35cn5e.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.agroguru",
-            "certificate_hash": "4d77b5b4944204ff438b459ada2fee8d0ecbe410"
-          }
-        },
-        {
-          "client_id": "125457112288-93ffpurskdt8huesv3ed9c39tefv9cmq.apps.googleusercontent.com",
+          "client_id": "301985586495-msaff7b144bbev17bt1vvq26i1urn0b2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBHkh8v3UvblnfxLNltTy7CCBcCGKTK1Sw"
+          "current_key": "AIzaSyBNlp30cxR83hD7OK2fNVTvRSxBomsWAHY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "125457112288-93ffpurskdt8huesv3ed9c39tefv9cmq.apps.googleusercontent.com",
+              "client_id": "301985586495-msaff7b144bbev17bt1vvq26i1urn0b2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "301985586495-95i1qegijpl2k69c2a3c7do9pnb7sdho.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.agroguru"
+              }
             }
           ]
         }

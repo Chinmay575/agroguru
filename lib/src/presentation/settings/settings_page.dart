@@ -1,4 +1,5 @@
 import 'package:agroguru/src/presentation/common/appbar.dart';
+import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/settings/bloc/settings_bloc.dart';
 import 'package:agroguru/src/presentation/settings/widgets/settings_tile.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
@@ -15,27 +16,18 @@ class SettingsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SettingsBloc()..add(SettingsInitialEvent()),
       child: BlocConsumer<SettingsBloc, SettingsState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is LoggedOutState) {
+            // await BlocProvider.of<ProfileBloc>(context).close();
+            BlocProvider.of<ProfileBloc>(context).add(ProfileLogOutEvent());
             Navigator.pushNamedAndRemoveUntil(
               context,
               Routes.login,
-              (route) => route.settings.name == Routes.home,
+              (route) => route.settings.name == Routes.login,
             );
-            // BlocProvider.of<ProfileBloc>(context).add(
-            //   ProfileLogOutEvent(),
-            // );
-            // BlocProvider.of<ProfileBloc>(context).add(
-            //   ProfileLogOutEvent(),
-            // );
           }
         },
         builder: (context, state) {
-          if (state is LoggedOutState) {
-            return Scaffold(
-              body: Container(),
-            );
-          }
           return Scaffold(
             appBar: customAppBar(),
             body: SafeArea(
