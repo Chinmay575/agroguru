@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'src/config/bloc/global_bloc.dart';
+
 Future main() async {
   await AppRouter.init().then(
     (_) {
@@ -21,15 +23,26 @@ class MyApp extends StatelessWidget {
       providers: [...AppRouter.allBlocProviders()],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'AgroGuru',
-          // theme: lightTheme,
-          initialRoute: Routes.splash,
-          onGenerateRoute: AppRouter.onGenerateRoute,
-          locale: const Locale('en'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
+        child: BlocConsumer<GlobalBloc, GlobalState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            print(state.mode);
+            print(state.appLanguage.toString());
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'AgroGuru',
+              theme: ThemeData(),
+              darkTheme: ThemeData.dark(),
+              themeMode: state.mode,
+              initialRoute: Routes.splash,
+              onGenerateRoute: AppRouter.onGenerateRoute,
+              locale: Locale(
+                state.appLanguage.toString(),
+              ),
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
         ),
       ),
     );

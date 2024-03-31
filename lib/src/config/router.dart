@@ -44,6 +44,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../presentation/create_post/bloc/create_post_bloc.dart';
 import '../presentation/notifications/notifications_page.dart';
+import 'bloc/global_bloc.dart';
 
 class AppRouter {
   static List<AppRoute> routes() => [
@@ -228,9 +229,12 @@ class AppRouter {
           create: (context) => AiBloc(),
         ),
         BlocProvider(
+          create: (context) => GlobalBloc(),
+        ),
+        BlocProvider(
           create: (context) => GuideBloc()..add(GetPlantData()),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => SchemesBloc()..add(GetSchemesEvent()),
         ),
       ];
@@ -244,7 +248,7 @@ class AppRouter {
 
     await AuthRepository.checkAuthStatus();
 
-    print( 'Cur User: ${AuthRepository.curUser?.toMap()}');
+    print('Cur User: ${AuthRepository.curUser?.toMap()}');
     print(AuthRepository.isAuthenticated);
     await Global.init();
   }
