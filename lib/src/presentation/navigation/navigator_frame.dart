@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../navigation/bloc/navigation_bloc.dart';
+import 'bloc/navigation_bloc.dart';
 
 class NavigatorFrame extends StatefulWidget {
   int curIndex;
@@ -25,7 +26,7 @@ class _NavigatorFrameState extends State<NavigatorFrame> {
   List<Widget> actions(int curIndex) => [
         navigatorButton(
           icon: Icons.home,
-          name: "Home",
+          name: AppLocalizations.of(context)!.home,
           onTap: () {
             pageController.animateToPage(
               0,
@@ -40,7 +41,7 @@ class _NavigatorFrameState extends State<NavigatorFrame> {
         ),
         navigatorButton(
           icon: Icons.storefront,
-          name: "Store",
+          name: AppLocalizations.of(context)!.store,
           onTap: () {
             pageController.animateToPage(
               1,
@@ -65,7 +66,6 @@ class _NavigatorFrameState extends State<NavigatorFrame> {
       onTap: (isActive) ? () {} : onTap,
       child: Container(
         height: 40.h,
-        // width: 118.w,
         margin: EdgeInsets.symmetric(vertical: 24.h),
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         decoration: BoxDecoration(
@@ -80,13 +80,13 @@ class _NavigatorFrameState extends State<NavigatorFrame> {
               child: Icon(
                 icon,
                 size: 20.h,
-                color: (isActive) ? HexColor('#21A366') : Colors.black,
+                color: (isActive) ? HexColor('#21A366') : Theme.of(context).iconTheme.color,
               ),
             ),
             Text(
               name,
-              style: TextStyles.body(
-                color: (isActive) ? HexColor('#21A366') : Colors.black,
+              style: TextStyles.of(context).body(
+                color: (isActive) ? HexColor('#21A366') : Theme.of(context).iconTheme.color,
               ),
             ),
           ],

@@ -53,7 +53,7 @@ class _LoginUsingEmailState extends State<LoginUsingEmail> {
                   ),
                   Text(
                     AppLocalizations.of(context)!.loginAccount,
-                    style: TextStyles.heading3(),
+                    style: TextStyles.of(context).heading3(),
                   ),
                   SizedBox(
                     height: 32.h,
@@ -72,7 +72,7 @@ class _LoginUsingEmailState extends State<LoginUsingEmail> {
                     onPressed: () {},
                     child: Text(
                       AppLocalizations.of(context)!.forgetPassword,
-                      style: TextStyles.body(
+                      style: TextStyles.of(context).body(
                         color: Theme.of(context).primaryColor,
                         decoration: TextDecoration.underline,
                         decorationColor: Theme.of(context).primaryColor,

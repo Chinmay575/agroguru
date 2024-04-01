@@ -30,11 +30,11 @@ class SchemesTile extends StatelessWidget {
             Text(
               scheme.name,
               overflow: TextOverflow.ellipsis,
-              style: TextStyles.heading6(),
+              style: TextStyles.of(context).heading6(),
             ),
             Text(
               scheme.publishDate,
-              style: TextStyles.body(),
+              style: TextStyles.of(context).body(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class SchemesTile extends StatelessWidget {
                               ),
                               Text(
                                 'Link',
-                                style: TextStyles.body(),
+                                style: TextStyles.of(context).body(),
                               ),
                             ],
                           ),
@@ -98,7 +98,7 @@ class SchemesTile extends StatelessWidget {
                               ),
                               Text(
                                 'PDF',
-                                style: TextStyles.body(),
+                                style: TextStyles.of(context).body(),
                               ),
                             ],
                           ),

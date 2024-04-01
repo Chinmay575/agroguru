@@ -37,7 +37,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       const Icon(Icons.location_on_outlined),
                       Text(
                         state.weather?.city ?? 'Location',
-                        style: TextStyles.small(),
+                        style: TextStyles.of(context).small(),
                       ),
                     ],
                   ),
@@ -58,11 +58,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             Text(
                               state.weather!.condition,
-                              style: TextStyles.heading6(),
+                              style: TextStyles.of(context).heading6(),
                             ),
                             Text(
                               '${state.weather!.tempratureC} \u2103',
-                              style: TextStyles.heading2(),
+                              style: TextStyles.of(context).heading2(),
                             ),
                           ],
                         )
@@ -84,11 +84,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             Text(
                               'Humidity',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             Text(
                               '${state.weather!.humidity}%',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             )
                           ],
                         ),
@@ -97,11 +97,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             Text(
                               'Wind',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             Text(
                               '${state.weather!.windK}km/h',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             )
                           ],
                         ),
@@ -110,11 +110,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             Text(
                               'Precipitation',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             Text(
                               '${state.weather!.rain}%',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             )
                           ],
                         ),
@@ -123,11 +123,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             Text(
                               'UV Index',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             Text(
                               '${state.weather!.uvIndex}',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             )
                           ],
                         )
@@ -153,7 +153,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: Center(
                           child: Text(
                             'Today',
-                            style: TextStyles.heading6(
+                            style: TextStyles.of(context).heading6(
                               color: HexColor('#BF131513'),
                             ),
                           ),
@@ -176,7 +176,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: Center(
                           child: Text(
                             'Upcoming',
-                            style: TextStyles.heading6(
+                            style: TextStyles.of(context).heading6(
                               color: HexColor('#40131513'),
                             ),
                           ),

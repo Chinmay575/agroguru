@@ -73,7 +73,8 @@ class CreatePostPage extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () async {
-                                      Navigator.pushNamed(context, Routes.camera);
+                                      Navigator.pushNamed(
+                                          context, Routes.camera);
                                     },
                                     child: Container(
                                       height: 200.h,
@@ -93,7 +94,8 @@ class CreatePostPage extends StatelessWidget {
                                           Image.network(Strings.camera),
                                           Text(
                                             'Camera',
-                                            style: TextStyles.heading6(),
+                                            style: TextStyles.of(context)
+                                                .heading6(),
                                           ),
                                         ],
                                       ),
@@ -118,7 +120,8 @@ class CreatePostPage extends StatelessWidget {
                                         Image.network(Strings.images),
                                         Text(
                                           'Gallery',
-                                          style: TextStyles.heading6(),
+                                          style:
+                                              TextStyles.of(context).heading6(),
                                         ),
                                       ],
                                     ),

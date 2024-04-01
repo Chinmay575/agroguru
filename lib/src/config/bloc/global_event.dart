@@ -8,6 +8,8 @@ class GlobalEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetSavedPreferences extends GlobalEvent {}
+
 class ChangeThemeEvent extends GlobalEvent {
   ThemeMode mode;
   ChangeThemeEvent({

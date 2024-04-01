@@ -44,7 +44,7 @@ class _FeedPageState extends State<FeedPage> {
               children: [
                 Text(
                   'Want to share something....',
-                  style: TextStyles.heading6(),
+                  style: TextStyles.of(context).heading6(),
                 ),
                 SizedBox(
                   height: 8.h,

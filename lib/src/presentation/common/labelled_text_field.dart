@@ -29,7 +29,7 @@ class LabelledTextField extends StatelessWidget {
             bottom: 8.h,
             left: 29.w,
           ),
-          child: Text(label, style: TextStyles.body()),
+          child: Text(label, style: TextStyles.of(context).body()),
         ),
         CustomTextField(
           onChanged: onChanged,

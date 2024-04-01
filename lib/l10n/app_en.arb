@@ -26,5 +26,18 @@
     "verifyEmail": "Verify Email",
     "resendOTPin": "Resend OTP in",
     "resendOTP": "Resend OTP",
-    "issuesText": "Having trouble? Contact\n support for assistance"
+    "issuesText": "Having trouble? Contact\n support for assistance",
+    "plantCare": "Plant Care",
+    "governmentSchemes": "Government Schemes",
+    "agricultureGuide": "Agriculture Guide",
+    "aiAssistant": "AI Assistant",
+    "home": "Home",
+    "store": "Store",
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "feedback": "Feedback",
+    "aboutUs": "About Us",
+    "logOut": "Log-out",
+    "theme": "Theme",
+    "language": "Language"
 }

@@ -56,7 +56,7 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         Text(
                           state.acc?.email ?? '',
-                          style: TextStyles.heading6(),
+                          style: TextStyles.of(context).heading6(),
                         ),
                         Padding(
                           padding: EdgeInsets.all(8.h),

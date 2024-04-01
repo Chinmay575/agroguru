@@ -39,7 +39,7 @@ class CustomTextButton extends StatelessWidget {
         color: color,
         child: Text(
           text,
-          style: TextStyles.heading6(color: textColor ?? Colors.black),
+          style: TextStyles.of(context).heading6(color: textColor ?? Colors.black),
         ),
       ),
     );

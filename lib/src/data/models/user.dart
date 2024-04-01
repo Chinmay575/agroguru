@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'dart:convert';
 
+import 'package:agroguru/src/utils/constants/enums/supported_languages.dart';
 import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class UserAccount extends Equatable {
   String id;
@@ -15,6 +17,8 @@ class UserAccount extends Equatable {
   String address;
   String createdAt;
   String lastUpdated;
+  String theme;
+  String language;
   UserAccount({
     required this.id,
     required this.name,
@@ -25,6 +29,8 @@ class UserAccount extends Equatable {
     required this.address,
     required this.createdAt,
     required this.lastUpdated,
+    required this.theme,
+    required this.language,
   });
 
   factory UserAccount.fromUser(User acc) {
@@ -39,6 +45,8 @@ class UserAccount extends Equatable {
       address: '',
       createdAt: DateTime.now().toString(),
       lastUpdated: DateTime.now().toString(),
+      language: Languages.en.toString().split('.').last,
+      theme: ThemeMode.system.toString().split('.').last,
     );
   }
 
@@ -53,6 +61,8 @@ class UserAccount extends Equatable {
       'address': address,
       'createdAt': createdAt,
       'lastUpdated': lastUpdated,
+      'theme': theme,
+      'language': language
     };
   }
 
@@ -67,6 +77,12 @@ class UserAccount extends Equatable {
       address: map['address'] as String,
       lastUpdated: map['lastUpdated'] as String,
       createdAt: map['createdAt'] as String,
+      theme: (map['theme'] != null)
+          ? map['theme'] as String
+          : ThemeMode.system.toString().split('.').last,
+      language: (map['language'] != null)
+          ? map['language'] as String
+          : Languages.en.toString().split('.').last,
     );
   }
 
@@ -85,6 +101,8 @@ class UserAccount extends Equatable {
     String? address,
     String? lastUpdated,
     String? createdAt,
+    String? theme,
+    String? language,
   }) {
     return UserAccount(
       id: id ?? this.id,
@@ -95,7 +113,9 @@ class UserAccount extends Equatable {
       isVerified: isVerified ?? this.isVerified,
       address: address ?? this.address,
       createdAt: createdAt ?? this.createdAt,
-      lastUpdated: createdAt ?? this.lastUpdated,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      theme: theme ?? this.theme,
+      language: language ?? this.language,
     );
   }
 
@@ -111,6 +131,8 @@ class UserAccount extends Equatable {
       address,
       createdAt,
       lastUpdated,
+      theme,
+      language,
     ];
   }
 }

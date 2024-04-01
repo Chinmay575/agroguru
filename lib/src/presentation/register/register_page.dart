@@ -5,7 +5,6 @@ import 'package:agroguru/src/utils/constants/enums/auth_status.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -61,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       Text(
                         AppLocalizations.of(context)!.createAccount,
-                        style: TextStyles.heading3(),
+                        style: TextStyles.of(context).heading3(),
                       ),
                       SizedBox(
                         height: 32.h,
@@ -109,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ? Text(
                                     AppLocalizations.of(context)!
                                         .iAgreeWithTermsAndConditions,
-                                    style: TextStyles.body(),
+                                    style: TextStyles.of(context).body(),
                                   )
                                 : Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -117,13 +116,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                     children: [
                                       Text(
                                         'I agree with ',
-                                        style: TextStyles.body(),
+                                        style: TextStyles.of(context).body(),
                                       ),
                                       GestureDetector(
                                         onTap: () {},
                                         child: Text(
                                           'Terms and Conditions',
-                                          style: TextStyles.body(
+                                          style: TextStyles.of(context).body(
                                             color: Theme.of(context).primaryColor,
                                             decoration: TextDecoration.underline,
                                             decorationColor:
@@ -158,7 +157,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Center(
                           child: Text(
                             AppLocalizations.of(context)!.privacyPolicyInfo,
-                            style: TextStyles.small(),
+                            style: TextStyles.of(context).small(),
                           ),
                         ),
                       ),

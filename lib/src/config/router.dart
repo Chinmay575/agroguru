@@ -34,6 +34,7 @@ import 'package:agroguru/src/presentation/settings/views/about_us_page.dart';
 import 'package:agroguru/src/presentation/settings/views/feed_back_page.dart';
 import 'package:agroguru/src/presentation/settings/views/preferences_page.dart';
 import 'package:agroguru/src/presentation/splash/splash_page.dart';
+import 'package:agroguru/src/presentation/store/bloc/store_bloc.dart';
 import 'package:agroguru/src/presentation/store/store_page.dart';
 import 'package:agroguru/src/presentation/weather/bloc/weather_bloc.dart';
 import 'package:agroguru/src/presentation/weather/weather_page.dart';
@@ -229,7 +230,7 @@ class AppRouter {
           create: (context) => AiBloc(),
         ),
         BlocProvider(
-          create: (context) => GlobalBloc(),
+          create: (context) => GlobalBloc()..add(GetSavedPreferences()),
         ),
         BlocProvider(
           create: (context) => GuideBloc()..add(GetPlantData()),
@@ -237,6 +238,9 @@ class AppRouter {
         BlocProvider(
           create: (context) => SchemesBloc()..add(GetSchemesEvent()),
         ),
+        BlocProvider(
+          create: (context) => StoreBloc()..add(LoadMockData()),
+        )
       ];
 
   static Future init() async {
@@ -251,5 +255,16 @@ class AppRouter {
     print('Cur User: ${AuthRepository.curUser?.toMap()}');
     print(AuthRepository.isAuthenticated);
     await Global.init();
+
+    // TranslateLanguage sourceLanguage = TranslateLanguage.english;
+    // TranslateLanguage targetLanguage = TranslateLanguage.hindi;
+
+    // OnDeviceTranslator onDeviceTranslator = OnDeviceTranslator(
+    //   sourceLanguage: sourceLanguage,
+    //   targetLanguage: targetLanguage,
+    // );
+
+    // final String response = await onDeviceTranslator.translateText('Agro Guru');
+    // print(response);
   }
 }

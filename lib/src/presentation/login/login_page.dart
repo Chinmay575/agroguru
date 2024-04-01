@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 32.h),
                       child: Text(AppLocalizations.of(context)!.dontHaveAccount,
-                          style: TextStyles.small()),
+                          style: TextStyles.of(context).small()),
                     ),
                     CustomTextButton(
                       onPressed: () {

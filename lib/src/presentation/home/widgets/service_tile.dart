@@ -44,7 +44,7 @@ class ServicesTile extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: TextStyles.heading6(),
+                  style: TextStyles.of(context).heading6(),
                   overflow: TextOverflow.fade,
                   textAlign: TextAlign.center,
                 ),

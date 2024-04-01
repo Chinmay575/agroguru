@@ -77,7 +77,7 @@ class _LeafInputPageState extends State<LeafInputPage> {
                                     ),
                                     Text(
                                       'Camera',
-                                      style: TextStyles.heading6(),
+                                      style: TextStyles.of(context).heading6(),
                                     )
                                   ],
                                 ),
@@ -99,7 +99,7 @@ class _LeafInputPageState extends State<LeafInputPage> {
                                     ),
                                     Text(
                                       'Gallery',
-                                      style: TextStyles.heading6(),
+                                      style: TextStyles.of(context).heading6(),
                                     )
                                   ],
                                 ),

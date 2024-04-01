@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../utils/styles/text_styles.dart';
 
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               'User',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                           ],
                         ),
@@ -112,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             state.acc?.name ?? 'User',
-                            style: TextStyles.body(),
+                            style: TextStyles.of(context).body(),
                           ),
                         ],
                       ),
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Text(
                     'Search',
-                    style: TextStyles.body(
+                    style: TextStyles.of(context).body(
                       color: HexColor('#80131513'),
                     ),
                   ),
@@ -182,28 +183,29 @@ class _HomePageState extends State<HomePage> {
                         Navigator.pushNamed(context, Routes.plantCareHome);
                       },
                       image: Strings.leaf,
-                      title: 'Plant Care',
+                      // title: 'Plant Care',
+                      title: AppLocalizations.of(context)!.plantCare,
                     ),
                     ServicesTile(
                       onTap: () {
                         Navigator.pushNamed(context, Routes.schemes);
                       },
                       image: Strings.schemes,
-                      title: 'Government Schemes',
+                      title: AppLocalizations.of(context)!.governmentSchemes,
                     ),
                     ServicesTile(
                       onTap: () {
                         Navigator.pushNamed(context, Routes.guide);
                       },
                       image: Strings.guide,
-                      title: 'Agriculture Guide',
+                      title: AppLocalizations.of(context)!.agricultureGuide,
                     ),
                     ServicesTile(
                       onTap: () {
                         Navigator.pushNamed(context, Routes.assistant);
                       },
                       image: Strings.aiIcon,
-                      title: 'AI Assistant',
+                      title: AppLocalizations.of(context)!.aiAssistant,
                     ),
                   ],
                 ),

@@ -126,7 +126,7 @@ class AuthRepository {
   }
 
   static Future checkAuthStatus() async {
-    await auth.authStateChanges().listen(
+    auth.authStateChanges().listen(
       (User? user) async {
         if (user != null) {
           print(user.email);

@@ -46,6 +46,8 @@ class UserRepository {
       DocumentReference ref = db.collection(Collections.users).doc(acc.id);
       DocumentSnapshot snapshot = await ref.get();
 
+      acc.lastUpdated = DateTime.now().toString();
+
       if (snapshot.exists) {
         await ref.update(acc.toMap());
         return true;

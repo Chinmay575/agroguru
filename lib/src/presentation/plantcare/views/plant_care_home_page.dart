@@ -2,10 +2,7 @@ import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
 import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -40,7 +37,7 @@ class _PlantCareHomePageState extends State<PlantCareHomePage> {
             children: [
               Text(
                 'How to Use',
-                style: TextStyles.heading6(),
+                style: TextStyles.of(context).heading6(),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 16.h),
@@ -64,7 +61,7 @@ class _PlantCareHomePageState extends State<PlantCareHomePage> {
               ),
               Text(
                 'Leaf Disease Detection',
-                style: TextStyles.heading6(),
+                style: TextStyles.of(context).heading6(),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 16.h),
@@ -90,7 +87,7 @@ class _PlantCareHomePageState extends State<PlantCareHomePage> {
               ),
               Text(
                 'History',
-                style: TextStyles.heading6(),
+                style: TextStyles.of(context).heading6(),
               ),
               SizedBox(
                 height: 16.h,
@@ -117,7 +114,7 @@ class _PlantCareHomePageState extends State<PlantCareHomePage> {
                       ),
                       Text(
                         'Name',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       ),
                     ],
                   );

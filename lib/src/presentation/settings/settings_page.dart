@@ -7,6 +7,7 @@ import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -41,35 +42,35 @@ class SettingsPage extends StatelessWidget {
                       children: [
                         SettingsTile(
                           image: Strings.profile,
-                          title: 'Profile',
+                          title: AppLocalizations.of(context)!.profile,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.profile);
                           },
                         ),
                         SettingsTile(
                           image: Strings.preferences,
-                          title: 'Preferences',
+                          title: AppLocalizations.of(context)!.preferences,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.preferences);
                           },
                         ),
                         SettingsTile(
                           image: Strings.feedback,
-                          title: 'Feedback',
+                          title: AppLocalizations.of(context)!.feedback,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.feedback);
                           },
                         ),
                         SettingsTile(
                           image: Strings.aboutUs,
-                          title: 'About us',
+                          title: AppLocalizations.of(context)!.aboutUs,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.about);
                           },
                         ),
                         SettingsTile(
                           image: Strings.logout,
-                          title: 'Log-out',
+                          title: AppLocalizations.of(context)!.logOut,
                           isLast: true,
                           onTap: () {
                             context.read<SettingsBloc>().add(

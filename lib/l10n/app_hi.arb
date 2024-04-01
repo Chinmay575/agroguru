@@ -26,5 +26,18 @@
     "verifyEmail": "ईमेल सत्यापित करें",
     "resendOTPin": "ओटीपी पुनः भेजें",
     "resendOTP": "ओटीपी पुनः भेजें",
-    "issuesText": "परेशानी हो रही है? सहायता के लिए समर्थन से संपर्क करें"
+    "issuesText": "परेशानी हो रही है? सहायता के लिए समर्थन से संपर्क करें",
+    "plantCare": "पौधों की देखभाल",
+    "governmentSchemes": "सरकारी योजनाएं",
+    "agricultureGuide": "कृषि मार्गदर्शिका",
+    "aiAssistant": "एआई सहायक",
+    "home": "होम",
+    "store": "दुकान",
+    "profile": "प्रोफ़ाइल",
+    "preferences": "पसंद",
+    "feedback": "प्रतिक्रिया",
+    "aboutUs": "हमारे बारे में",
+    "logOut": "लॉग आउट",
+    "theme": "थीम",
+    "language": "भाषा"
 }

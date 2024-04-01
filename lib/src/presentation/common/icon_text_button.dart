@@ -42,7 +42,7 @@ class CustomIconTextButton extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyles.heading6(color: HexColor('#80131513')),
+            style: TextStyles.of(context).heading6(color: HexColor('#80131513')),
           ),
         ],
       ),

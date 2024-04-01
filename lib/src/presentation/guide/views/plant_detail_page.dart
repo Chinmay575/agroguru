@@ -53,21 +53,21 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                   ),
                   Text(
                     state.p?.name ?? 'Name',
-                    style: TextStyles.heading4(),
+                    style: TextStyles.of(context).heading4(),
                   ),
                   SizedBox(
                     height: 8.h,
                   ),
                   Text(
                     state.p?.desc ?? 'Desc',
-                    style: TextStyles.body(),
+                    style: TextStyles.of(context).body(),
                   ),
                   SizedBox(
                     height: 8.h,
                   ),
                   Text(
                     'Commonly known as ${state.p?.commonNames}',
-                    style: TextStyles.body(),
+                    style: TextStyles.of(context).body(),
                   ),
                   SizedBox(
                     height: 8.h,
@@ -78,49 +78,49 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                           children: [
                             Text(
                               'Scientifically called ${state.p?.scientificNames}',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Belongs to the family of ${state.p?.family}',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Belongs to ${state.p?.genus} genus',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Requires an average rainfall of ${state.p?.avgRainfall} mm',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Requires an average temprature of ${state.p?.avgTemp}  \u2103',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Harvested in the months of ${state.p?.harvestMonth}',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
                               'Takes ${state.p?.harvestTime} days to grow',
-                              style: TextStyles.body(),
+                              style: TextStyles.of(context).body(),
                             ),
                             SizedBox(
                               height: 8.h,
@@ -138,11 +138,11 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                       child: (showMore)
                           ? Text(
                               'Read Less',
-                              style: TextStyles.small(),
+                              style: TextStyles.of(context).small(),
                             )
                           : Text(
                               'Read More',
-                              style: TextStyles.small(),
+                              style: TextStyles.of(context).small(),
                             ),
                     ),
                   ),
@@ -158,7 +158,7 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                     children: [
                       Text(
                         'Learn how to plant:',
-                        style: TextStyles.heading6(),
+                        style: TextStyles.of(context).heading6(),
                       ),
                       SizedBox(
                         height: 16.h,

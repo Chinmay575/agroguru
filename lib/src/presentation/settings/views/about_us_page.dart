@@ -39,7 +39,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ),
                       Text(
                         'Chinmay Singh Modak',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       )
                     ],
                   ),
@@ -55,7 +55,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ),
                       Text(
                         'Abhinav Singh',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       )
                     ],
                   ),
@@ -71,7 +71,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ),
                       Text(
                         'Omkar Bajantri',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       )
                     ],
                   ),
@@ -87,7 +87,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ),
                       Text(
                         'Aman Sharma',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       )
                     ],
                   ),

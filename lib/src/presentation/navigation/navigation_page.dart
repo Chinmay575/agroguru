@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../common/navigator_frame.dart';
+import 'navigator_frame.dart';
 import 'bloc/navigation_bloc.dart';
 
 class NavigationPage extends StatefulWidget {

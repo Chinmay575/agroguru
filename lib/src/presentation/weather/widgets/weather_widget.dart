@@ -56,11 +56,11 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                     children: [
                       Text(
                         state.weather?.condition ?? '',
-                        style: TextStyles.small(),
+                        style: TextStyles.of(context).small(),
                       ),
                       Text(
                         '${state.weather!.tempratureC} \u2103',
-                        style: TextStyles.heading4(),
+                        style: TextStyles.of(context).heading4(),
                       ),
                     ],
                   ),
@@ -72,7 +72,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                       ),
                       Text(
                         state.weather!.city,
-                        style: TextStyles.small(),
+                        style: TextStyles.of(context).small(),
                       ),
                     ],
                   ),

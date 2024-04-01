@@ -42,7 +42,7 @@ class _AiAssistantPageState extends State<AiAssistantPage> {
     }
   }
 
-  _handlePreviewDataFetched(
+  List<types.Message> _handlePreviewDataFetched(
     List<types.Message> messages,
     types.TextMessage message,
     types.PreviewData previewData,
@@ -107,8 +107,8 @@ class _AiAssistantPageState extends State<AiAssistantPage> {
               },
               onPreviewDataFetched: (txt, prev) {
                 context.read<AiBloc>().add(
-                      SendMessageEvent(
-                        message: _handlePreviewDataFetched(
+                      UpdateMessagesEvent(
+                        messages: _handlePreviewDataFetched(
                           state.messages,
                           txt,
                           prev,

@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         onEditingComplete: onEditingComplete,
         textAlign: textAlign ?? TextAlign.start,
-        style: TextStyles.body(),
+        style: TextStyles.of(context).body(),
         maxLength: maxLength,
         maxLines: maxLines,
         focusNode: focusNode,

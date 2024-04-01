@@ -63,7 +63,7 @@ class _GuidePageState extends State<GuidePage> {
                           Text(
                             'Some Random text',
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyles.body(),
+                            style: TextStyles.of(context).body(),
                           )
                         ],
                       ),
@@ -151,7 +151,7 @@ class _GuidePageState extends State<GuidePage> {
                               Text(
                                 state.plantData[index].name,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyles.body(),
+                                style: TextStyles.of(context).body(),
                               )
                             ],
                           ),

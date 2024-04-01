@@ -26,7 +26,6 @@ class Product {
     required this.images,
     required this.videos,
   });
-  
 
   Product copyWith({
     String? id,
@@ -73,20 +72,25 @@ class Product {
     return Product(
       id: map['id'] as String,
       name: map['name'] as String,
-      price: map['price'] as double,
-      discount: map['discount'] as int,
+      price: double.parse(map['price']),
+      discount: int.parse(map['discount']),
       category: map['category'] as String,
-      subCategory: map['subCategory'] as String,
-      rating: map['rating'] as double,
-      quantity: map['quantity'] as int,
-      images: List<String>.from(map['images'] as List<String>),
-      videos: List<String>.from(map['videos'] as List<String>),
+      subCategory: map['subcategory'] as String,
+      rating: double.parse(map['rating ']),
+      quantity: int.parse(map['quantity']),
+      images: (map['images'] != null)
+          ? [map['images']]
+          : [],
+      videos: (map['videos'] != null)
+          ? [map['videos']]
+          : [],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) => Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Product.fromJson(String source) =>
+      Product.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -96,31 +100,30 @@ class Product {
   @override
   bool operator ==(covariant Product other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.price == price &&
-      other.discount == discount &&
-      other.category == category &&
-      other.subCategory == subCategory &&
-      other.rating == rating &&
-      other.quantity == quantity &&
-      listEquals(other.images, images) &&
-      listEquals(other.videos, videos);
+
+    return other.id == id &&
+        other.name == name &&
+        other.price == price &&
+        other.discount == discount &&
+        other.category == category &&
+        other.subCategory == subCategory &&
+        other.rating == rating &&
+        other.quantity == quantity &&
+        listEquals(other.images, images) &&
+        listEquals(other.videos, videos);
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      price.hashCode ^
-      discount.hashCode ^
-      category.hashCode ^
-      subCategory.hashCode ^
-      rating.hashCode ^
-      quantity.hashCode ^
-      images.hashCode ^
-      videos.hashCode;
+        name.hashCode ^
+        price.hashCode ^
+        discount.hashCode ^
+        category.hashCode ^
+        subCategory.hashCode ^
+        rating.hashCode ^
+        quantity.hashCode ^
+        images.hashCode ^
+        videos.hashCode;
   }
 }

@@ -18,17 +18,19 @@ class Logo extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.agro,
-                style: TextStyles.heading1(),
+                style: TextStyles.of(context).heading1(),
               ),
               Text(
                 AppLocalizations.of(context)!.guru,
-                style: TextStyles.heading1(color: Theme.of(context).primaryColor),
+                style: TextStyles.of(context).heading1(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ],
           ),
           Text(
             AppLocalizations.of(context)!.tagline,
-            style: TextStyles.body(color: HexColor('#BF131513')),
+            style: TextStyles.of(context).body(color: HexColor('#BF131513')),
           ),
         ],
       ),

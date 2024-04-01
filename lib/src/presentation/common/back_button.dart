@@ -42,7 +42,7 @@ class CustomBackButton extends StatelessWidget {
               ),
               child: Text(
                 AppLocalizations.of(context)!.back,
-                style: TextStyles.body(),
+                style: TextStyles.of(context).body(),
               ),
             ),
           ],

@@ -24,7 +24,7 @@ class ChatTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.r)),
       child: Text(
         message,
-        style: TextStyles.body(
+        style: TextStyles.of(context).body(
           color: (isUser) ? Colors.amber : Colors.lightBlue,
         ),
         textAlign: (isUser) ? TextAlign.end : TextAlign.start,

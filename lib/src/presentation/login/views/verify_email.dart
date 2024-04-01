@@ -45,21 +45,21 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             ),
             Text(
               AppLocalizations.of(context)!.verification,
-              style: TextStyles.heading3(),
+              style: TextStyles.of(context).heading3(),
             ),
             SizedBox(
               height: 32.h,
             ),
             Text(
               AppLocalizations.of(context)!.verificationText,
-              style: TextStyles.small(),
+              style: TextStyles.of(context).small(),
             ),
             SizedBox(
               height: 32.h,
             ),
             Text(
               AppLocalizations.of(context)!.otp,
-              style: TextStyles.body(),
+              style: TextStyles.of(context).body(),
             ),
             Container(
               height: 80.h,
@@ -115,7 +115,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             Center(
               child: Text(
                 AppLocalizations.of(context)!.resendOTPin,
-                style: TextStyles.small(),
+                style: TextStyles.of(context).small(),
               ),
             ),
             SizedBox(
@@ -132,7 +132,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             Center(
               child: Text(
                 AppLocalizations.of(context)!.issuesText,
-                style: TextStyles.small(),
+                style: TextStyles.of(context).small(),
                 textAlign: TextAlign.center,
               ),
             ),

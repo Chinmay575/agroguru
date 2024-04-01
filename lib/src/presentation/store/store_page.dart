@@ -3,11 +3,15 @@ import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../domain/repository/auth_repository.dart';
+import '../../utils/constants/strings/assets.dart';
 import '../../utils/constants/strings/routes.dart';
+import 'bloc/store_bloc.dart';
 
 class StorePage extends StatefulWidget {
   StorePage({super.key});
@@ -104,7 +108,7 @@ class _StorePageState extends State<StorePage> {
                       ),
                       Text(
                         AuthRepository.curUser?.name ?? '',
-                        style: TextStyles.body(),
+                        style: TextStyles.of(context).body(),
                       ),
                     ],
                   ),
@@ -148,7 +152,7 @@ class _StorePageState extends State<StorePage> {
                     ),
                     child: Text(
                       'Search',
-                      style: TextStyles.body(
+                      style: TextStyles.of(context).body(
                         color: HexColor('#80131513'),
                       ),
                     ),
@@ -196,7 +200,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                   Text(
                                     'Favorites',
-                                    style: TextStyles.body(),
+                                    style: TextStyles.of(context).body(),
                                   ),
                                 ],
                               ),
@@ -225,7 +229,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                   Text(
                                     'Orders',
-                                    style: TextStyles.body(),
+                                    style: TextStyles.of(context).body(),
                                   ),
                                 ],
                               ),
@@ -240,18 +244,65 @@ class _StorePageState extends State<StorePage> {
                           color: HexColor('#1315130D'),
                         ),
                       ),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: 64,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisExtent: 200.w,
-                          crossAxisSpacing: 24.w,
-                          mainAxisSpacing: 16.w,
-                        ),
-                        itemBuilder: (context, index) {
-                          return ProductGrid();
+                      BlocConsumer<StoreBloc, StoreState>(
+                        listener: (context, state) {},
+                        builder: (context, state) {
+                          if (state is StoreLoadingState) {
+                            return GridView.builder(
+                              shrinkWrap: true,
+                              itemCount: 64,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisExtent: 200.w,
+                                crossAxisSpacing: 24.w,
+                                mainAxisSpacing: 16.w,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Skeletonizer(
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(32.r),
+                                        child: Image.asset(
+                                          Assets.imagePlaceholder,
+                                          height: 152.h,
+                                          width: 152.h,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 8.h,
+                                      ),
+                                      Text(
+                                        'Name',
+                                        style: TextStyles.of(context).small(),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.products.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisExtent: 200.w,
+                              crossAxisSpacing: 24.w,
+                              mainAxisSpacing: 16.w,
+                            ),
+                            itemBuilder: (context, index) {
+                              return ProductGrid(
+                                p: state.products[index],
+                              );
+                            },
+                          );
                         },
                       ),
                     ],

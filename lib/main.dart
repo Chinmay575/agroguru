@@ -15,8 +15,24 @@ Future main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback(
+    //   (_) => BlocProvider.of<GlobalBloc>(context).add(
+    //     GetSavedPreferences(),
+    //   ),
+    // );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -36,9 +52,7 @@ class MyApp extends StatelessWidget {
               themeMode: state.mode,
               initialRoute: Routes.splash,
               onGenerateRoute: AppRouter.onGenerateRoute,
-              locale: Locale(
-                state.appLanguage.toString(),
-              ),
+              locale: Locale(state.appLanguage.toString().split('.').last),
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
             );
