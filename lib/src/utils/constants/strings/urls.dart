@@ -5,7 +5,7 @@ class Urls {
 
   static String aws = '18.177.13.5';
 
-  static String localApiUrl = 'http://192.168.1.152:8000/api/v1/';
+  static String localApiUrl = 'http://$aws:8000/api/v1/';
 }
 
 class Endpoints {
