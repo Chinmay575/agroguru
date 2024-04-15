@@ -1,6 +1,6 @@
 import 'package:agroguru/src/domain/repository/auth_repository.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,7 @@ part 'settings_event.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  SettingsBloc() : super(SettingsState(image: Strings.avatar)) {
+  SettingsBloc() : super(SettingsState(image: Assets.avatar)) {
     on<SettingsInitialEvent>(
       (event, emit) {
         if (AuthRepository.curUser != null) {

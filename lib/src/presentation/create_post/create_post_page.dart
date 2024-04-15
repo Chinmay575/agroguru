@@ -5,13 +5,14 @@ import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/common/text_field.dart';
 import 'package:agroguru/src/presentation/create_post/bloc/create_post_bloc.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../../utils/constants/strings/assets.dart';
 
 class CreatePostPage extends StatelessWidget {
   const CreatePostPage({super.key});
@@ -31,7 +32,7 @@ class CreatePostPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            leading: const CustomBackButton(),
+            leading: CustomBackButton(),
             leadingWidth: 89.w,
           ),
           body: SingleChildScrollView(
@@ -91,7 +92,7 @@ class CreatePostPage extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Image.network(Strings.camera),
+                                          Image.asset(Assets.camera),
                                           Text(
                                             'Camera',
                                             style: TextStyles.of(context)
@@ -117,7 +118,7 @@ class CreatePostPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Image.network(Strings.images),
+                                        Image.asset(Assets.images),
                                         Text(
                                           'Gallery',
                                           style:

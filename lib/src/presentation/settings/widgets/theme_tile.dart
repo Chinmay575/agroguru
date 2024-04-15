@@ -1,5 +1,5 @@
 import 'package:agroguru/src/config/bloc/global_bloc.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:agroguru/src/utils/extensions/capitalize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,8 +36,8 @@ class _ThemeTileState extends State<ThemeTile> {
                         height: 32.h,
                         width: 32.h,
                         margin: EdgeInsets.only(left: 8.w, right: 16.w),
-                        child: Image.network(
-                          Strings.darkMode,
+                        child: Image.asset(
+                          Assets.darkMode,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -70,6 +70,13 @@ class _ThemeTileState extends State<ThemeTile> {
                         itemBuilder: (context, index) {
                           return ListTile(
                             dense: true,
+                            trailing:
+                                (ThemeMode.values[index] != ThemeMode.light)
+                                    ? Text(
+                                        'Experimental',
+                                        style: TextStyles.of(context).small(),
+                                      )
+                                    : null,
                             leading: Container(
                               height: 20.h,
                               width: 20.h,
@@ -107,23 +114,6 @@ class _ThemeTileState extends State<ThemeTile> {
                                 ),
                               );
                             },
-                            // trailing: (state.mode == ThemeMode.values[index])
-                            //     ? Container(
-                            //         height: 30.h,
-                            //         width: 30.h,
-                            //         // decoration: BoxDecoration(
-                            //         //   color: Colors.lightGreen,
-                            //         //   borderRadius:
-                            //         //       BorderRadius.circular(30.r),
-                            //         // ),
-                            //         child: const Center(
-                            //           child: Icon(
-                            //             Icons.verified,
-                            //             color: Colors.green,
-                            //           ),
-                            //         ),
-                            //       )
-                            //     : null,
                           );
                         },
                         separatorBuilder: (context, index) {

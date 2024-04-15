@@ -52,4 +52,10 @@ class Routes {
   static String assistant = '/assistant';
 
   static String splash = '/splash';
+
+  static String tutorial = '/tutorial';
+
+  static String detailedResult = '/detailedResult';
+
+  static String search = '/search';
 }

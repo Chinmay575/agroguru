@@ -1,5 +1,4 @@
 import 'package:agroguru/src/presentation/store/widgets/product_grid.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -98,7 +97,7 @@ class _StorePageState extends State<StorePage> {
                             height: 48.w,
                             width: 48.w,
                             (AuthRepository.curUser?.displayPic) ??
-                                Strings.avatar,
+                                Assets.avatar,
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -193,8 +192,8 @@ class _StorePageState extends State<StorePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Image.network(
-                                    Strings.favorites,
+                                  Image.asset(
+                                    Assets.favorites,
                                     height: 32.h,
                                     width: 32.h,
                                   ),
@@ -222,8 +221,8 @@ class _StorePageState extends State<StorePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Image.network(
-                                    Strings.orders,
+                                  Image.asset(
+                                    Assets.orders,
                                     height: 32.h,
                                     width: 32.h,
                                   ),

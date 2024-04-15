@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:agroguru/src/data/models/scheme.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../utils/constants/strings/strings.dart';
 import '../../../utils/styles/text_styles.dart';
 
 class SchemesTile extends StatelessWidget {
@@ -33,8 +33,12 @@ class SchemesTile extends StatelessWidget {
               style: TextStyles.of(context).heading6(),
             ),
             Text(
-              scheme.publishDate,
+              'Launched on ${scheme.publishDate}',
               style: TextStyles.of(context).body(),
+            ),
+            Text(
+              'For more details',
+              style: TextStyles.of(context).small(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -58,10 +62,13 @@ class SchemesTile extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.network(
-                                Strings.link,
+                              Image.asset(
+                                Assets.link,
                                 height: 32.h,
                                 width: 32.h,
+                              ),
+                              SizedBox(
+                                width: 12.w,
                               ),
                               Text(
                                 'Link',
@@ -91,10 +98,13 @@ class SchemesTile extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.network(
-                                Strings.pdf,
+                              Image.asset(
+                                Assets.pdf,
                                 height: 32.h,
                                 width: 32.h,
+                              ),
+                              SizedBox(
+                                width: 12.w,
                               ),
                               Text(
                                 'PDF',

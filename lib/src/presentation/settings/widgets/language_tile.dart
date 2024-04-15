@@ -1,6 +1,6 @@
 import 'package:agroguru/src/config/bloc/global_bloc.dart';
 import 'package:agroguru/src/utils/constants/enums/supported_languages.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:agroguru/src/utils/extensions/capitalize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,8 +37,8 @@ class _LanguageTileState extends State<LanguageTile> {
                         height: 32.h,
                         width: 32.h,
                         margin: EdgeInsets.only(left: 8.w, right: 16.w),
-                        child: Image.network(
-                          Strings.language,
+                        child: Image.asset(
+                          Assets.language,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -71,6 +71,13 @@ class _LanguageTileState extends State<LanguageTile> {
                         itemBuilder: (context, index) {
                           return Center(
                             child: ListTile(
+                              trailing:
+                                (Languages.values[index] != Languages.en)
+                                    ? Text(
+                                        'Experimental',
+                                        style: TextStyles.of(context).small(),
+                                      )
+                                    : null,
                               dense: true,
                               leading: Container(
                                 height: 20.h,

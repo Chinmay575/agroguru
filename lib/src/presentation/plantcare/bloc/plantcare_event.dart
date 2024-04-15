@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 part of 'plantcare_bloc.dart';
 
 class PlantcareEvent extends Equatable {
@@ -9,6 +10,20 @@ class PlantcareEvent extends Equatable {
 
 class GetPredictionHistory extends PlantcareEvent {}
 
-class GetImageFromCamera extends PlantcareEvent {}
+class GetImageEvent extends PlantcareEvent {
+  File image;
+  GetImageEvent({
+    required this.image,
+  });
+}
 
-class GetImageFromGallery extends PlantcareEvent {}
+class SendPredictionRequest extends PlantcareEvent {}
+
+class ResetPredictionEvent extends PlantcareEvent {}
+
+class GetCurrentIndexEvent extends PlantcareEvent {
+  int index;
+  GetCurrentIndexEvent({
+    required this.index,
+  });
+}

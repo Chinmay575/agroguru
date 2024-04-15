@@ -32,7 +32,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         // title: CustomBackButton(),
-        leading: const CustomBackButton(),
+        leading: CustomBackButton(),
         leadingWidth: 90.w,
       ),
       body: Container(

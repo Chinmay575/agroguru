@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/guide/bloc/plant_detail_bloc.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,7 +33,7 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            leading: const CustomBackButton(),
+            leading: CustomBackButton(),
             leadingWidth: 96.w,
           ),
           body: SingleChildScrollView(
@@ -45,7 +44,7 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                 children: [
                   Container(
                     child: Image.network(
-                      state.p?.image ?? Strings.imagePlaceholder,
+                      state.p?.image ?? Assets.imagePlaceholder,
                       height: 336.w,
                       width: 336.w,
                       fit: BoxFit.contain,
@@ -168,7 +167,7 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                           Container(
                             height: 256.h,
                             width: 336.w,
-                            color: Colors.amber,
+                            // color: Colors.amber,
                             child: Image.network(
                               '${state.p?.videoThumbnail}',
                               fit: BoxFit.fitWidth,
@@ -183,8 +182,8 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                                 await launchUrl(url);
                               },
                               child: Center(
-                                child: Image.network(
-                                  Strings.youtube,
+                                child: Image.asset(
+                                  Assets.youtube,
                                 ),
                               ),
                             ),

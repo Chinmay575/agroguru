@@ -12,14 +12,14 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
   GlobalBloc()
       : super(
           GlobalState(
-            mode: ThemeMode.system,
+            mode: ThemeMode.light,
             appLanguage: Languages.en,
           ),
         ) {
     on<GetSavedPreferences>(
       (event, emit) {
         print('Fetching theme and language');
-        String theme = 'system';
+        String theme = 'light';
         String language = 'en';
 
         if (AuthRepository.curUser != null) {

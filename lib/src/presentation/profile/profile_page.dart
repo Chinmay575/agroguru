@@ -1,10 +1,11 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:agroguru/src/presentation/common/back_button.dart';
 import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/utils/constants/enums/login_methods.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,8 @@ class ProfilePage extends StatelessWidget {
         print(state.acc!.toMap());
         return Scaffold(
           appBar: AppBar(
-            leading: const BackButton(),
+            leading: CustomBackButton(),
+            leadingWidth: 96.w,
           ),
           body: SafeArea(
             child: Container(
@@ -39,7 +41,7 @@ class ProfilePage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(64.h),
                       child: Image.network(
-                        state.acc?.displayPic ?? Strings.avatar,
+                        state.acc?.displayPic ?? Assets.avatar,
                         height: 128.h,
                         width: 128.h,
                         fit: BoxFit.cover,

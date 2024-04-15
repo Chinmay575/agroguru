@@ -3,7 +3,7 @@ import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/settings/bloc/settings_bloc.dart';
 import 'package:agroguru/src/presentation/settings/widgets/settings_tile.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,35 +41,35 @@ class SettingsPage extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         SettingsTile(
-                          image: Strings.profile,
+                          image: Assets.profile,
                           title: AppLocalizations.of(context)!.profile,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.profile);
                           },
                         ),
                         SettingsTile(
-                          image: Strings.preferences,
+                          image: Assets.preferences,
                           title: AppLocalizations.of(context)!.preferences,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.preferences);
                           },
                         ),
                         SettingsTile(
-                          image: Strings.feedback,
+                          image: Assets.feedback,
                           title: AppLocalizations.of(context)!.feedback,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.feedback);
                           },
                         ),
                         SettingsTile(
-                          image: Strings.aboutUs,
+                          image: Assets.aboutUs,
                           title: AppLocalizations.of(context)!.aboutUs,
                           onTap: () {
                             Navigator.pushNamed(context, Routes.about);
                           },
                         ),
                         SettingsTile(
-                          image: Strings.logout,
+                          image: Assets.logout,
                           title: AppLocalizations.of(context)!.logOut,
                           isLast: true,
                           onTap: () {

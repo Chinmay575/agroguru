@@ -20,8 +20,11 @@ import 'package:agroguru/src/presentation/login/views/email_login.dart';
 import 'package:agroguru/src/presentation/login/views/verify_email.dart';
 import 'package:agroguru/src/presentation/navigation/bloc/navigation_bloc.dart';
 import 'package:agroguru/src/presentation/navigation/navigation_page.dart';
+import 'package:agroguru/src/presentation/plantcare/bloc/plantcare_bloc.dart';
+import 'package:agroguru/src/presentation/plantcare/views/detailed_result_page.dart';
 import 'package:agroguru/src/presentation/plantcare/views/leaf_input_page.dart';
 import 'package:agroguru/src/presentation/plantcare/views/plant_care_home_page.dart';
+import 'package:agroguru/src/presentation/plantcare/views/plant_care_tutorial_page.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/profile/profile_page.dart';
 import 'package:agroguru/src/presentation/profile/views/update_profile_page.dart';
@@ -29,6 +32,7 @@ import 'package:agroguru/src/presentation/register/register_page.dart';
 import 'package:agroguru/src/presentation/schemes/bloc/schemes_bloc.dart';
 import 'package:agroguru/src/presentation/schemes/schemes_page.dart';
 import 'package:agroguru/src/presentation/schemes/views/detailed_schemes_page.dart';
+import 'package:agroguru/src/presentation/search/search_page.dart';
 import 'package:agroguru/src/presentation/settings/settings_page.dart';
 import 'package:agroguru/src/presentation/settings/views/about_us_page.dart';
 import 'package:agroguru/src/presentation/settings/views/feed_back_page.dart';
@@ -157,6 +161,18 @@ class AppRouter {
           name: Routes.splash,
           view: const SplashScreen(),
         ),
+        AppRoute(
+          name: Routes.tutorial,
+          view: const PlantCareTutorialPage(),
+        ),
+        AppRoute(
+          name: Routes.detailedResult,
+          view: const DetailedResultPage(),
+        ),
+        AppRoute(
+          name: Routes.search,
+          view: const SearchPage(),
+        ),
       ];
 
   static Route onGenerateRoute(RouteSettings settings) {
@@ -182,13 +198,13 @@ class AppRouter {
           nextRoute = Routes.login;
         }
       }
-      List<String> pages = [
-        Routes.home,
-        Routes.store,
-      ];
-      if (pages.contains(nextRoute)) {
-        nextRoute = Routes.navigationFrame;
-      }
+      // List<String> pages = [
+      //   Routes.home,
+      //   Routes.store,
+      // ];
+      // if (pages.contains(nextRoute)) {
+      //   nextRoute = Routes.navigationFrame;
+      // }
       print(nextRoute);
       Iterable<AppRoute> result =
           routes().where((element) => element.name == nextRoute);
@@ -210,6 +226,9 @@ class AppRouter {
         ),
         BlocProvider(
           create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PlantcareBloc()..add(GetPredictionHistory()),
         ),
         BlocProvider(
           create: (context) => WeatherBloc()..add(WeatherInitialEvent()),

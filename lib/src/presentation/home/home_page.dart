@@ -1,14 +1,16 @@
+import 'package:agroguru/src/config/bloc/global_bloc.dart';
 import 'package:agroguru/src/presentation/home/widgets/service_tile.dart';
 import 'package:agroguru/src/presentation/profile/bloc/profile_bloc.dart';
 import 'package:agroguru/src/presentation/weather/widgets/weather_widget.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../utils/constants/strings/assets.dart';
+import '../../utils/constants/strings/strings.dart';
 import '../../utils/styles/text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     print('Init called');
     BlocProvider.of<ProfileBloc>(context).add(ProfileInitialEvent());
+    BlocProvider.of<GlobalBloc>(context).add(GetSavedPreferences());
   }
 
   @override
@@ -40,6 +43,8 @@ class _HomePageState extends State<HomePage> {
                 automaticallyImplyLeading: false,
                 title: Container(
                   height: 64.h,
+                  // color: Colors.amber,
+                  margin: EdgeInsets.symmetric(horizontal: 27.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,6 +92,7 @@ class _HomePageState extends State<HomePage> {
               automaticallyImplyLeading: false,
               title: Container(
                 height: 64.h,
+                margin: EdgeInsets.symmetric(horizontal: 17.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -103,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                               child: Image.network(
                                 height: 48.w,
                                 width: 48.w,
-                                (state.acc?.displayPic ?? Strings.avatar),
+                                (state.acc?.displayPic ?? Assets.avatar),
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -123,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.pushNamed(context, Routes.settings);
                       },
                       padding: EdgeInsets.zero,
-                      icon: Icon(Icons.settings),
+                      icon: Icon(Icons.more_vert),
                     ),
                   ],
                 ),
@@ -144,20 +150,25 @@ class _HomePageState extends State<HomePage> {
               toolbarHeight: 96.h,
               foregroundColor: Colors.transparent,
               flexibleSpace: Center(
-                child: Container(
-                  height: 64.h,
-                  width: 390.w,
-                  margin: EdgeInsets.symmetric(horizontal: 27.w),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 32.w, vertical: 20.w),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(64.r),
-                  ),
-                  child: Text(
-                    'Search',
-                    style: TextStyles.of(context).body(
-                      color: HexColor('#80131513'),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.search);
+                  },
+                  child: Container(
+                    height: 64.h,
+                    width: 390.w,
+                    margin: EdgeInsets.symmetric(horizontal: 27.w),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 32.w, vertical: 20.w),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(64.r),
+                    ),
+                    child: Text(
+                      'Search',
+                      style: TextStyles.of(context).body(
+                        color: HexColor('#80131513'),
+                      ),
                     ),
                   ),
                 ),
@@ -182,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.pushNamed(context, Routes.plantCareHome);
                       },
-                      image: Strings.leaf,
+                      image: Assets.leaf,
                       // title: 'Plant Care',
                       title: AppLocalizations.of(context)!.plantCare,
                     ),
@@ -190,21 +201,21 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.pushNamed(context, Routes.schemes);
                       },
-                      image: Strings.schemes,
+                      image: Assets.schemes,
                       title: AppLocalizations.of(context)!.governmentSchemes,
                     ),
                     ServicesTile(
                       onTap: () {
                         Navigator.pushNamed(context, Routes.guide);
                       },
-                      image: Strings.guide,
+                      image: Assets.guide,
                       title: AppLocalizations.of(context)!.agricultureGuide,
                     ),
                     ServicesTile(
                       onTap: () {
                         Navigator.pushNamed(context, Routes.assistant);
                       },
-                      image: Strings.aiIcon,
+                      image: Assets.aiIcon,
                       title: AppLocalizations.of(context)!.aiAssistant,
                     ),
                   ],

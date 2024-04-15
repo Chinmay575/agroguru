@@ -37,7 +37,7 @@ class ServicesTile extends StatelessWidget {
                   height: 32.h,
                   width: 32.h,
                   margin: EdgeInsets.only(left: 8.w, right: 16.w),
-                  child: Image.network(
+                  child: Image.asset(
                     image,
                     fit: BoxFit.contain,
                   ),

@@ -1,5 +1,6 @@
 import 'package:agroguru/src/config/router.dart';
 import 'package:agroguru/src/utils/constants/strings/routes.dart';
+import 'package:agroguru/src/utils/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,15 +24,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) => BlocProvider.of<GlobalBloc>(context).add(
-    //     GetSavedPreferences(),
-    //   ),
-    // );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +34,11 @@ class _MyAppState extends State<MyApp> {
         child: BlocConsumer<GlobalBloc, GlobalState>(
           listener: (context, state) {},
           builder: (context, state) {
-            print(state.mode);
-            print(state.appLanguage.toString());
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'AgroGuru',
               theme: ThemeData(),
-              darkTheme: ThemeData.dark(),
+              darkTheme: Themes.of(context).darkTheme(),
               themeMode: state.mode,
               initialRoute: Routes.splash,
               onGenerateRoute: AppRouter.onGenerateRoute,

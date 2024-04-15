@@ -1,8 +1,8 @@
 import 'package:agroguru/src/presentation/common/appbar.dart';
-import 'package:agroguru/src/utils/constants/strings/strings.dart';
-import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../widgets/about_tile.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
@@ -25,72 +25,34 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 8.w,
                 crossAxisSpacing: 8.w,
+                mainAxisExtent: 224.h,
               ),
               shrinkWrap: true,
               children: [
-                Container(
-                  // color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Image.network(
-                        Strings.avatar,
-                        height: 128.h,
-                        width: 128.h,
-                      ),
-                      Text(
-                        'Chinmay Singh Modak',
-                        style: TextStyles.of(context).body(),
-                      )
-                    ],
-                  ),
+                AboutTile(
+                  name: 'Chinmay Singh Modak',
+                  github: 'https://github.com/Chinmay575',
+                  linkedin: 'https://www.linkedin.com/in/chinmay-singh-modak/',
+                  gmail: 'chinmaysingh575@gmail.com',
                 ),
-                Container(
-                  // color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Image.network(
-                        Strings.avatar,
-                        height: 128.h,
-                        width: 128.h,
-                      ),
-                      Text(
-                        'Abhinav Singh',
-                        style: TextStyles.of(context).body(),
-                      )
-                    ],
-                  ),
+                AboutTile(
+                  linkedin: 'https://www.linkedin.com/in/abhinavsingh9240/',
+                  github: 'https://github.com/abhinavsingh9240/',
+                  gmail: 'abhinavsingh9240@gmail.com',
+                  name: 'Abhinav Singh',
                 ),
-                Container(
-                  // color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Image.network(
-                        Strings.avatar,
-                        height: 128.h,
-                        width: 128.h,
-                      ),
-                      Text(
-                        'Omkar Bajantri',
-                        style: TextStyles.of(context).body(),
-                      )
-                    ],
-                  ),
+                AboutTile(
+                  github: 'https://github.com/02Omkar',
+                  linkedin: 'https://www.linkedin.com/in/omkar-bajantri/',
+                  gmail: 'omkarbajantri10@gmail.com',
+                  name: 'Omkar Bajantri',
                 ),
-                Container(
-                  // color: Colors.amber,
-                  child: Column(
-                    children: [
-                      Image.network(
-                        Strings.avatar,
-                        height: 128.h,
-                        width: 128.h,
-                      ),
-                      Text(
-                        'Aman Sharma',
-                        style: TextStyles.of(context).body(),
-                      )
-                    ],
-                  ),
+                AboutTile(
+                  github: 'https://github.com/Aman9058490490',
+                  gmail: 'sharmaaman9058@gmail.com',
+                  linkedin:
+                      'https://www.linkedin.com/in/aman-sharma-527561221/',
+                  name: 'Aman Sharma',
                 ),
               ],
             ),

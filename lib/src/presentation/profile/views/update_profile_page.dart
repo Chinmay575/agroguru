@@ -1,10 +1,10 @@
 import 'package:agroguru/src/presentation/common/text_button.dart';
 import 'package:agroguru/src/presentation/common/text_field.dart';
+import 'package:agroguru/src/utils/constants/strings/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/constants/strings/strings.dart';
 import '../../../utils/styles/text_styles.dart';
 import '../../common/back_button.dart';
 import '../bloc/profile_bloc.dart';
@@ -32,7 +32,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            leading: const CustomBackButton(),
+            leading:  CustomBackButton(),
             leadingWidth: 96.w,
           ),
           body: SingleChildScrollView(
@@ -51,7 +51,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(64.h),
                       child: Image.network(
-                        state.acc?.displayPic ?? Strings.avatar,
+                        state.acc?.displayPic ?? Assets.avatar,
                         height: 128.h,
                         width: 128.h,
                         fit: BoxFit.cover,

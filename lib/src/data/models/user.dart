@@ -1,6 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, prefer_const_literals_to_create_immutables
 import 'dart:convert';
 
+import 'package:agroguru/src/data/models/prediction.dart';
 import 'package:agroguru/src/utils/constants/enums/supported_languages.dart';
 import 'package:agroguru/src/utils/constants/strings/strings.dart';
 import 'package:equatable/equatable.dart';
@@ -19,6 +20,7 @@ class UserAccount extends Equatable {
   String lastUpdated;
   String theme;
   String language;
+  List<Prediction> predictionHistory;
   UserAccount({
     required this.id,
     required this.name,
@@ -31,6 +33,7 @@ class UserAccount extends Equatable {
     required this.lastUpdated,
     required this.theme,
     required this.language,
+    this.predictionHistory = const [],
   });
 
   factory UserAccount.fromUser(User acc) {
@@ -47,6 +50,7 @@ class UserAccount extends Equatable {
       lastUpdated: DateTime.now().toString(),
       language: Languages.en.toString().split('.').last,
       theme: ThemeMode.system.toString().split('.').last,
+      predictionHistory: [],
     );
   }
 
@@ -62,7 +66,8 @@ class UserAccount extends Equatable {
       'createdAt': createdAt,
       'lastUpdated': lastUpdated,
       'theme': theme,
-      'language': language
+      'language': language,
+      'predictionHistory': predictionHistory.map((e) => e.toMap()),
     };
   }
 
@@ -77,6 +82,9 @@ class UserAccount extends Equatable {
       address: map['address'] as String,
       lastUpdated: map['lastUpdated'] as String,
       createdAt: map['createdAt'] as String,
+      predictionHistory: (map['predictionHistory'] as List<dynamic>)
+          .map((e) => Prediction.fromMap(e))
+          .toList(),
       theme: (map['theme'] != null)
           ? map['theme'] as String
           : ThemeMode.system.toString().split('.').last,
@@ -103,6 +111,7 @@ class UserAccount extends Equatable {
     String? createdAt,
     String? theme,
     String? language,
+    List<Prediction>? predictionHistory,
   }) {
     return UserAccount(
       id: id ?? this.id,
@@ -116,6 +125,7 @@ class UserAccount extends Equatable {
       lastUpdated: lastUpdated ?? this.lastUpdated,
       theme: theme ?? this.theme,
       language: language ?? this.language,
+      predictionHistory: predictionHistory ?? this.predictionHistory,
     );
   }
 
@@ -133,6 +143,7 @@ class UserAccount extends Equatable {
       lastUpdated,
       theme,
       language,
+      predictionHistory,
     ];
   }
 }

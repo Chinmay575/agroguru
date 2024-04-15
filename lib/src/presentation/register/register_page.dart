@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               // title: CustomBackButton(),
-              leading: const CustomBackButton(),
+              leading: CustomBackButton(),
               leadingWidth: 96.w,
             ),
             body: SafeArea(

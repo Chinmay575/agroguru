@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
@@ -91,11 +90,12 @@ class TextStyles {
     Color? color,
     TextDecoration? decoration,
     Color? decorationColor,
+    FontWeight? weight,
   }) =>
       TextStyle(
         fontFamily: 'Lato',
         fontSize: 20.sp,
-        fontWeight: FontWeight.w400,
+        fontWeight: weight ?? FontWeight.w400,
         color: color ??
             Theme.of(context).textTheme.displayLarge?.color ??
             Colors.black,
@@ -106,11 +106,12 @@ class TextStyles {
     Color? color,
     TextDecoration? decoration,
     Color? decorationColor,
+    FontWeight? weight,
   }) =>
       TextStyle(
         fontFamily: 'Lato',
         fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
+        fontWeight: weight ?? FontWeight.w400,
         color: color ??
             Theme.of(context).textTheme.displayLarge?.color ??
             Colors.black,

@@ -1,8 +1,10 @@
+import 'package:agroguru/src/data/models/scheme.dart';
 import 'package:agroguru/src/presentation/common/appbar.dart';
 import 'package:agroguru/src/presentation/schemes/widgets/schemes_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import 'bloc/schemes_bloc.dart';
 
@@ -23,8 +25,23 @@ class _SchemesPageState extends State<SchemesPage> {
           return Scaffold(
             appBar: customAppBar(),
             body: Container(
-              child: Center(
-                child: CircularProgressIndicator(),
+              margin: EdgeInsets.symmetric(horizontal: 27.w),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Skeletonizer(
+                    child: SchemesTile(
+                      scheme: GovtSchemes(
+                        description: '',
+                        name: "Lorem ipsum dorem ipsum",
+                        publishDate: DateTime.now().toString(),
+                        link: 'link',
+                        relatedDocument: 'link',
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           );

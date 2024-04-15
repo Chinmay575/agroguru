@@ -2,9 +2,12 @@ import 'package:agroguru/src/data/models/user.dart';
 import 'package:agroguru/src/domain/repository/auth_repository.dart';
 import 'package:agroguru/src/utils/constants/strings/collections.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class UserRepository {
   static FirebaseFirestore db = FirebaseFirestore.instance;
+
+  static FirebaseStorage storage = FirebaseStorage.instance;
 
   static Future onUserCreated(UserAccount acc) async {
     try {

@@ -16,7 +16,7 @@ class _DetailedSchemesPageState extends State<DetailedSchemesPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: const CustomBackButton(),
+        leading: CustomBackButton(),
         leadingWidth: 96.w,
       ),
       body: Container(),

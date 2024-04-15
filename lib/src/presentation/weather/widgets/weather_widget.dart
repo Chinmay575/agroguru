@@ -3,7 +3,6 @@ import 'package:agroguru/src/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../bloc/weather_bloc.dart';
@@ -27,12 +26,15 @@ class _WeatherWidgetState extends State<WeatherWidget> {
         builder: (context, state) {
           if (state is WeatherErroredState) {
             return Container(
-              height: 128.h,
-              decoration: BoxDecoration(
-                color: HexColor('#1315131A'),
-                borderRadius: BorderRadius.circular(32.r),
+              height: 72.h,
+              width: 336.w,
+              margin: EdgeInsets.symmetric(vertical: 16.h),
+              child: Center(
+                child: Text(
+                  "Something went wrong",
+                  style: TextStyles.of(context).body(),
+                ),
               ),
-              child: const Text("Something went wrong"),
             );
           } else if (state is WeatherLoadedState) {
             return Container(
@@ -55,7 +57,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        state.weather?.condition ?? '',
+                        (state.weather!.condition.length > 20)
+                            ? '${state.weather!.condition.substring(0, 17)}...'
+                            : (state.weather?.condition ?? ''),
                         style: TextStyles.of(context).small(),
                       ),
                       Text(
