@@ -106,7 +106,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             CustomTextButton(
               onPressed: () {},
               text: AppLocalizations.of(context)!.verifyEmail,
-              color: Theme.of(context).primaryColor,
+              color: Colors.green,
               textColor: Colors.white,
             ),
             SizedBox(

@@ -73,9 +73,9 @@ class _LoginUsingEmailState extends State<LoginUsingEmail> {
                     child: Text(
                       AppLocalizations.of(context)!.forgetPassword,
                       style: TextStyles.of(context).body(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.green,
                         decoration: TextDecoration.underline,
-                        decorationColor: Theme.of(context).primaryColor,
+                        decorationColor: Colors.green,
                       ),
                     ),
                   ),
@@ -92,7 +92,7 @@ class _LoginUsingEmailState extends State<LoginUsingEmail> {
                           );
                     },
                     text: AppLocalizations.of(context)!.login,
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.green,
                     textColor: Colors.white,
                   ),
                 ],

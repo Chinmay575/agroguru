@@ -23,7 +23,7 @@ class Logo extends StatelessWidget {
               Text(
                 AppLocalizations.of(context)!.guru,
                 style: TextStyles.of(context).heading1(
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.green,
                 ),
               ),
             ],

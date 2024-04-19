@@ -123,10 +123,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                         child: Text(
                                           'Terms and Conditions',
                                           style: TextStyles.of(context).body(
-                                            color: Theme.of(context).primaryColor,
+                                            color: Colors.green,
                                             decoration: TextDecoration.underline,
                                             decorationColor:
-                                                Theme.of(context).primaryColor,
+                                                Colors.green,
                                           ),
                                         ),
                                       ),
@@ -148,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                         },
                         text: AppLocalizations.of(context)!.register,
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.green,
                         textColor: Colors.white,
                       ),
                       Container(

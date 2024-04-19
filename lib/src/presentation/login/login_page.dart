@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushNamed(context, Routes.loginUsingEmail);
                       },
                       text: AppLocalizations.of(context)!.loginWithEmailPhone,
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.green,
                       textColor: Colors.white,
                     ),
                     Container(
